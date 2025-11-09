@@ -1,6 +1,13 @@
 % !TEX root = /home/jaffa/P4_WS2526/425_ElektronischesRauschen/LateX/main.tex
 % !TEX root = /Users/mariamanuelaverafonseca/Documents/GitHub/P4_WS2526/425_ElektronischesRauschen/LateX/main.tex
 % !TEX root = /home/jaffar/Desktop/P4_WS2526/425_ElektronischesRauschen/LateX/main.tex
+\documentclass[%
+paper=a4,       % Papiergröße
+fontsize=12pt,  % Schriftgröße
+ngerman         % Option für deutsche Sprache
+]{scrreprt}
+\usepackage{scrhack} % support for KOMA-Script classes
+
 \input{config.tex}
 \addbibresource{refs.bib}
 % === Header =======================
@@ -20,8 +27,8 @@
 
 \begin{titlepage}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-\center
-\textsc{\LARGE }\\[1.5cm] % Name of your university/college
+\begin{center}
+\textsc{\LARGE}\\[1.5cm] % Name of your university/college
 \textsc{\LARGE Praktikum 4}\\[0.5cm] % Major heading such as course name
 \textsc{\large Atome, Moleküle, kondensierte Materie}\\[0.5cm] % Minor heading such as course title
 
@@ -56,7 +63,7 @@
 %----------------------------------------------------------------------------------------
 
 \vfill % Fill the rest of the page with whitespace
-
+\end{center}
 \end{titlepage}
 \tableofcontents
 \clearpage
