@@ -3,7 +3,7 @@ Schrotrauschen entsteht aufgrund der zufälligen statistischen Fluktuation diskr
 In diesem Versuchsteli wird ein solcher Elektronenstrom durch den Photoeffekt erzeugt. Eine Glühlampe emittiert diskrete Photonen, welche auf eine Photodiode treffen und dort Elektronen rauslösen, welche wiederum Stromfluktuationen erzeugen.\\
 Diese lassen sich über die Schottky-Formel quantifizieren:
 \begin{equation}
-    \overline{\delta_i^2} = 2ei_{\mathrm{dc}}\Delta f
+    \overline{\delta_i^2} = 2ei_{\mathrm{dc}}\Delta f\label{equ:schottky}
 \end{equation}
 wobei $\overline{\delta_i^2}$ die mittlere quadratische Stromschwankungen, $e$ die Elementarladung, $i_{dc}$ den Mittelwert des Gleichstroms (Photostrom) und $\Delta f$ die effektive Bandbreite des Messsystems sind.\\
 Die effektive Bandbreite erhält man aus dem Frequenzgang der verwendeten Filter:
@@ -37,11 +37,11 @@ Das Ausgangssignal der HLE-Box $V_{\mathrm{Meter}}$ ist proportional zur mittler
     \overline{\delta_i^2} = \frac{\overline{V_{\mathrm{Meter}}(t)}\cdot \qty{10}{\volt}}{(100\cdot G_2\cdot R_f)^2},\quad \Delta\overline{\delta_i^2} = \frac{\Delta\overline{V_{\mathrm{Meter}}(t)}\cdot \qty{10}{\volt}}{(100\cdot G_2\cdot R_f)^2}
 \end{equation}
 Zur Messung des Schrotrauschens wird der Tiefpass der HLE-Box auf eine Grenzfreuqenz $f_{\mathrm{gr}} = \qty{100}{\kilo\hertz}$ eingestellt und alle Schalter auf AC eingestellt. Die Verstärkung $G_2$ wird so gewählt, dass das Signal $\overline{V_{\mathrm{Meter}}}$ Werte im Bereich von \SIrange{0.6}{1.2}{\volt} anzeigt, um im linearen Bereich zu bleiben.\\
-Das Rauschen wurde nun auf einem Oszilloskop sichtbar gemacht.
+Das Rauschen wurde nun auf einem Oszilloskop sichtbar gemacht (\cref{fig:schrot_oszi}).
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, width=0.6\linewidth]{images/IMG_0956.png}
-    \caption{Darstellung des Schrotrauschens auf dem Oszilloskop $V$/div $=\qty{5}{\volt}$; $T$/div $=\qty{4}{\micro\second}$}
+    \caption{Darstellung des Schrotrauschens auf dem Oszilloskop $V$/div $=\qty{5}{\volt}$; $T$/div $=\qty{4}{\micro\second}$}\label{fig:schrot_oszi}
 \end{figure}
 % ----
 \section{Untergrundbeiträge}
@@ -59,7 +59,7 @@ woraus sich eine mittlere Rauschleistung von
 Der gemessene Fehler hängt jedoch nicht nur von der HLE-Box, sondern auch vom Vorverstärker ab. Deswegen wird eine weitere Spannungsmessung bei abgeschalteter Glühlampe am Monitor Ausgang der LLE-Box durchgeführt.\\
 Hier beträgt $V_{\mathrm{Monitor}, 0}$ jedoch Null und hat somit keinen Beitrag zu Gleichstrom $i_\mathrm{dc}$. Auch wurde der Einfluss des DMM am Monitor-Ausgang des Vorverstärker untersucht, in dem er mehrmals aus- und eingesteckt wurde, jedoch konnte auch hier kein Beitrag notiert und somit der Einfluss vernachlässigt werden.
 % ----
-\section{Abhängigkeit des Schrotrauschens vom Gleichstrom}
+\section[Schrotrauschen (Gleichstrom)]{Abhängigkeit des Schrotrauschens vom Gleichstrom}
 % ----
 Um die Abhängigkeit des Schrotrauschens vom Gleichstrom $i_{\mathrm{dc}}$ zu Untersuchen werden die Ausgangsspannungen $V_{\mathrm{Monitor}}$ und $V_\mathrm{Meter}$ für verschiedene Glühbirnenspannungen vermessen (\cref{tab:schrot_strom}).
 \begin{table}[h!]
@@ -97,7 +97,7 @@ Um die Abhängigkeit des Schrotrauschens vom Gleichstrom $i_{\mathrm{dc}}$ zu Un
 \end{table}
 Zur Berücksichtigung des Untergrundrauschens werden die Rauschschwankungen um den Offset korrigiert:
 \begin{equation}
-    \overline{\delta_i^2} = \frac{\overline{V_{\mathrm{Meter}}(t)}\cdot \qty{10}{\volt}}{(100\cdot G_2 R_f)^2} - \overline{\delta_{i, \mathrm{offset}}^2},\quad\Delta\overline{\delta_i^2} = \sqrt{\left(\frac{\overline{\Delta V_{\mathrm{Meter}}(t)}\cdot \qty{10}{\volt}}{(100\cdot G_2 R_f)^2}\right)^2 - \left(\Delta\overline{\delta_{i, \mathrm{offset}}^2}\right)^2} 
+    \overline{\delta_i^2} = \frac{\overline{V_{\mathrm{Meter}}(t)}\cdot \qty{10}{\volt}}{(100\cdot G_2 R_f)^2} - \overline{\delta_{i, \mathrm{offset}}^2},\quad\Delta\overline{\delta_i^2} = \sqrt{\left(\frac{\overline{\Delta V_{\mathrm{Meter}}(t)}\cdot \qty{10}{\volt}}{(100\cdot G_2 R_f)^2}\right)^2 - \left(\Delta\overline{\delta_{i, \mathrm{offset}}^2}\right)^2}\label{equ:schrot_delta}
 \end{equation}
 und in \cref{fig:schrot_strom} aufgetragen.
 \begin{figure}
@@ -111,11 +111,11 @@ Der Zusammenhang lässt sich dirch lieare Regression der Form $y(x) = mx+b$ besc
     \item $b = \qty{-4.61(254)e-19}{\ampere\squared}$
     \item $\chi_{\mathrm{red}}^2 = 0.04$
 \end{itemize}
-was für ein sehr gutes Anpassungsmodell spricht. Dies lässt sich durch Betrachtung der (normierten) Residuen bestätigen, da diese nah um Null herum verteilt sind.\\
+was für ein zu gutes Anpassungsmodell spricht. Dies lässt sich durch Betrachtung der (normierten) Residuen bestätigen, da diese nah um Null herum verteilt sind. Hier wurden wahrscheinlich die Unsicherheiten überschätzt, was dazu führt, dass die Anpassung statistisch zu gut ist.\\
 % ----
-\section{Abhängigkeit des Schrotrauschens von der Bandbreite}
+\section[Schrotrauschen (Bandbreite)]{Abhängigkeit des Schrotrauschens von der Bandbreite}
 % ---
-Um die Abhängigkeit des Schrotrauschens von der Bandbreite und somit seine \enquote{Weißheit}(also konstante Rauschleistung über die Bandbreite) zu untersuchen wird nun der Gleichstrom $i_\mathrm{dc}$ konstant gehalten, in dem $V_{\mathrm{Monitor}}=\qty{10.02\pm 0.05}{\volt}$ eingestellt wurde. Die Grenzfrequenz des Tiefpasses $f_l$ wird nun variiert, wobei geachtet wurde, dass die Verstärkung $G_2$ eine Ausgangsspannung der HLE-Box zwischen \SIrange{0.6}{1.2}{\volt} ermöglicht. Der Widerstand der LLE-Box wurde auf $R_f = \qty{10}{\kilo\ohm}$ eingestellt.
+Um die Abhängigkeit des Schrotrauschens von der Bandbreite und somit seine \enquote{Weißheit}(also konstante Rauschleistung über die Bandbreite) zu untersuchen wird nun der Gleichstrom $i_\mathrm{dc}$ konstant gehalten, in dem $V_{\mathrm{Monitor}}=\qty{10.02\pm 0.05}{\volt}$ eingestellt wurde. Die Grenzfrequenz des Tiefpasses $f_l$ wird nun variiert, wobei geachtet wurde, dass die Verstärkung $G_2$ eine Ausgangsspannung der HLE-Box zwischen $\SIrange{0.6}{1.2}{\volt}$ ermöglicht. Der Widerstand der LLE-Box wurde auf $R_f = \qty{10}{\kilo\ohm}$ eingestellt und die Werte für die mittlere Stromschwankung gemäß \cref{equ:schrot_delta} ermittelt (\cref{tab:schrot_bandbreite}).
 \begin{table}[h!]
     \centering
     \begin{tabular}{
@@ -142,3 +142,60 @@ Um die Abhängigkeit des Schrotrauschens von der Bandbreite und somit seine \enq
     \end{tabular}
     \caption{Messwerte zur Abhängigkeit des Schrotrauschens von der Bandbreite: untere Grenzfrequenz $f_l$, Verstärkung $G_2$, gemessene Spannung $V_\mathrm{Meter}$, Bandbreite $\Delta f$ und mittlere Stromrauschleistung $\overline{\delta_i^2}$.}\label{tab:schrot_bandbreite}
 \end{table}
+Nun wird das Stromschwankungsquadrat gegen die effektive bandbreite aufgetragen und an die Messwerte eine lineare Anpassung der Form $y(x)=mx+b$ durchgeführt (\cref{fig:schrot_bandbreite})
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{plots/schrot_rauschen_bandbreite.pdf}
+    \caption{Darstellung der mittleren quadratischen Stromschwankungen in Abhängigkeit von der Bandbreite}\label{fig:schrot_bandbreite}
+\end{figure}
+Das Modell liefert:
+\begin{itemize}
+    \item $m = \qty{3.53(10)e-22}{\ampere\squared\per\hertz}$
+    \item $b = \qty{-3.37(9)e-19}{\ampere\squared}$
+    \item $\chi_{\mathrm{red}}^2 = 0.8$
+\end{itemize}
+was für eine gelungene Anpassung spricht.
+% ----
+\section{Berechnung der Elementarladung}
+% ----
+Nun kann Anhand der Schottky-Gleichung \cref{equ:schottky} die Elementarladung $e$ anhand der ermittelten Steigungen der Stromschwankungsquadrate berechnet werden:
+\begin{align}
+    \overline{\delta_i^2} &= 2ei_{\mathrm{dc}}\Delta f\\
+    \Rightarrow e_{\exp, i} &= \frac{\overline{\delta_i^2}}{2i_{\mathrm{dc}}\Delta f} = \left\{
+  \begin{array}{@{}l@{\quad}l@{}}
+    \frac{m}{2\Delta f} & \text{,für die Gleichstrommessung},\\[4pt]
+    \frac{m}{2i_\mathrm{dc}} & \text{,für die Bandbreitenmessung},\\[4pt]
+  \end{array}
+  \right.
+\end{align}
+Die effektive Bandbreite für den Gleichstrom ergibt sich aus dem Frequenzintegral
+\begin{eqnarray}
+    \Delta f = \int_{0}^{\infty} \frac{1}{1+\left(\frac{f}{f_l}\right)^4} = \qty{111.07}{\kilo\hertz}
+\end{eqnarray}
+Aus den Messwerten ergeben sich folgende experimentelle Werte für die Elementarladung:
+\begin{align*}
+    &\text{Gleichstrommessung:  } e_{\exp,\mathrm{strom}} = \qty{1.89(40)e-19}{\coulomb}\\
+    &\text{Bandbreitenmessung:  } e_{\exp,\mathrm{freq}} = \qty{1.75(5)e-19}{\coulomb}
+\end{align*}
+Die relativen Abweichungen zum Literaturwert von $e_{\mathrm{lit}}= \qty{1.602176634e-19}{\coulomb}$\cite{NIST} sowie die $\sigma$-Abweichungen sind in \cref{tab:schrot_elementar} festgehalten.
+\begin{table}[h]
+    \begin{tabular}{
+        c|
+        S[table-format=1.2(2)]|
+        S[table-format=2.1]|
+        S[table-format=1.1]
+    }
+    \toprule
+    \multicolumn{1}{c|}{Methode} &
+    \multicolumn{1}{c|}{$e$ / $10^{-19}$ C} &
+    \multicolumn{1}{c|}{Abweichung rel. zum Literaturwert / \%} &
+    \multicolumn{1}{c}{$\sigma$-Abweichung}
+    \\
+    \midrule
+    $i_{\mathrm{dc}} variiert$ & 1.89 \pm 0.4 & 17.9 & 0.7 \\
+    $\Delta f$ variiert & 1.75 \pm 0.05 & 7.9 & 3.0\\
+    \bottomrule
+    \end{tabular}
+    \caption{Ermittelte Werte der Elementarladung $e$}\label{tab:schrot_elementar}
+\end{table}
+Die $\sigma$-Abweichung für die Gleichstrommessung ist bei $1\sigma$ was für gut geschätzte Fehler spricht, wobei die der Bandbreitenmessung mit $3\sigma$ für zu klein geschätzte Fehler sprechen. Beide Werte liegen jedoch nah bis sehr nah am Literaturwert für die Elementarladung was eine gelungene Durchführung und Auswertung steht.

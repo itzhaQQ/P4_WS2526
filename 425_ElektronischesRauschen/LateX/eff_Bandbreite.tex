@@ -1,8 +1,143 @@
 \chapter{Effektive Bandbreite}
+
+Im ersten Versuchsteil wird die effektive Bandbreite $\Delta f_{\text{eff}}$ des Bandpasses bestimmt, um Rauschprozesse
+in realen Systemen zu analysieren. Ein Bandpass besteht aus einem Hochpass, der nur Frequenzen oberhalb einer bestimmten 
+Grenzfrequenz durchlässt, und einem Tiefpass, der Frequenzen unterhalbeiner bestimmten Grenzfrequenz durchlässt. Zwischen 
+diesen beiden Grenzfrequenzen liegt die sogenannte Durchlassbandbreite.
+Um $\Delta f_{\text{eff}}$ zu bestimmen, wird die Verstärkung $G$ des Filters in Abhängigkeit von der Frequenz des 
+Hochpasses $f_{\text{high}}$ und des Tiefpasses $f_{\text{low}}$ gemessen. Frequenzfilter können durch das sogenannte 
+Übertragungsverhalten oder die Übertragungsfunktion charakterisiert werden. Diese ist definiert als das Verhältnis der 
+Ausgangs- zur Eingangsgröße in Abhängigkeit von der Frequenz:
+
+\begin{equation}
+    G(f)= \frac{RMS_{out}}{RMS_{in}} = \frac{U_{out}}{U_{in}}.
+    \label{eq:bandpass_verstaerkung}
+\end{equation}
+Dabei ist die RMS das quadratische Mittel der Spannung. 
+Da es sich um eine Butherwoth-Filter 2.Ordnung handelt, sind die Übertragungsfunktion der 
+Hoch- und Tiefpass folgendermaßen definiert: 
+\begin{equation}
+    G_{LP}(f) = \frac{1}{\sqrt{1+(f/f_{low})^4}}
+\end{equation}
+und 
+\begin{equation}
+    G_{HP}(f) = \frac{f}{f_{high}} \cdot \frac{1}{\sqrt{1+(f/f_{high})^4}}
+\end{equation}
+Die Gesamtverstärkung des Bandpasses ergibt sich aus dem Produkt der beiden Einzelverstärkungen: 
+\begin{equation}
+    G_{BP}(f) = G_{LP}(f) \cdot G_{HP}(f).
+\end{equation}
+Die effektive Bandbreite $\Delta f_{eff}$ des Bandpasses wird durch das Integral der Quadrat der
+Übertragungsfunktion über alle Frequenzen definiert:
+\begin{equation}
+    \Delta f_{eff} = \int_0^{\infty} G_{BP}^2(f) df.
+\end{equation}
+\section{Durchführung}
 Zur Analyse des Ansprechverhaltens der Frequenzfilter wurde das Verstärkungsprofil der \\ \enquote{\texttt{High-Level electronics}}-Box (HLE) gemessen. 
+Die Aufbau ist in Abbildung \ref{fig:durchführung_bandpass} dargestellt.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{figs/johnson_hle.png}
     \caption{Schaltplan zur Messung des Ansprechverhaltens der Frequenzfilter~\cite{praktikum4_atome}}\label{fig:eff_Bandbreite_hle}
+    \label{fig:durchführung_bandpass}
 \end{figure}
 
+Um die Übertragungsfunktion zu bestimmen, wird ein Funktionsgenerator verwendet, der ein Sinussignal mit variierenden Amplituden erzeugt. Dieses Signal wird direkt auf Kanal 1 des Oszilloskops geleitet und parallel durch eine Kombination von Hoch- und Tiefpass gefiltert. Das gefilterte Signal wird auf Kanal 2 des Oszilloskops ausgegeben.
+Anschließend werden verschiedene Frequenzen am Funktionsgenerator eingestellt und die Amplituden der Ein- und Ausgangssignale gemessen.
+Nun Hoch- und tiepass sind fest auf $ \SI{100}{\kilo\hertz} $ und 
+ $ \SI{10}{\kilo\hertz} $ dementsprechend eingestellt.
+ Das Signal des Funktionsgenerators und das Ausgangssignal des Bandpasses werden auf dem Oszilloskops
+ angezeigt. Die Amplituden der Signale werden für verschiedene Frequenzen des Funktionsgenerators notiert.
+\section{Auswertung}
+Der Beitrag der Übertragungsfunktion ist durch die Verstärkung $G$ gegeben und ist bei der vorliegende
+Aufbau in Gleichung \ref{eq:bandpass_verstaerkung} definiert. Der Fehler der Verstärkung ergibt 
+sich aus der Fehlerfortpflanzung der gemessenen Spannungen:
+\begin{equation}
+    \Delta G = \sqrt{\left(\frac{1}{U_{in}} \Delta U_{out}\right)^2 + \left(-\frac{U_{out}}{U_{in}^2} \Delta U_{in}\right)^2 }.
+\end{equation}
+Dabei ist eine Unsicherheit von $5\%$ der gemessenen Spannungen angenommen worden und die gemessenen Werten 
+sind in \cref{tab:eff_Bandbreite}\footnote{Aufgrund der aufbauspezifischen Werte wurde in diesem Teil die gemessenen Werte zusammen mit der anderen Laborgruppe aufgezeichnet.} dargestellt. Diesen Daten werden in einem $G(f)$ gegen $log_{10}(f)$-Diagramm aufgetragen
+und sind in Abbildung \ref{fig:eff_Bandbreite_plot} dargestellt.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/eff_Bandbreite.pdf}
+    \caption{$G(f)$ als Funktion der Frequenz mit angepasste Funktion mit $\chi^2 = 122.75$}
+    \label{fig:eff_Bandbreite_plot}
+\end{figure}
+
+ Bei der Anpassung der Messdaten an die Funktion $G(f)$ ergeben sich die Parameter mit folgenden Werten: 
+\begin{align*}
+    f_{low} &= (11.15 \pm 0.23) \si{\kilo\hertz} \\
+    f_{high} &= ( 0.89 \pm 0.02) \si{\kilo\hertz}
+\end{align*}
+Mit diesen Werten lässt sich die effektive Bandbreite $\Delta f_{eff}$ des Bandpasses berechnen:
+\begin{equation}
+    \Delta f_{eff} = \int_0^{\infty} G^2(f) df = \int_0^{\infty} \left(\frac{f}{f_{high}} \cdot \frac{1}{\sqrt{1+(f/f_{high})^4}} \cdot \frac{1}{\sqrt{1+(f/f_{low})^4}}\right)^2 df.
+\end{equation}
+\begin{equation*}
+    \Delta f_{eff} = \frac{\sqrt{2} \pi f_{low}^4}{4(f_{hoch}+f_{low})(f_{low}^2 + f_{high}^2)}
+\end{equation*}
+Dieses Integral kann numerisch ausgewertet werden und ergibt:
+\begin{equation*}
+    \Delta f_{eff} \approx 11.39  \si{\kilo\hertz}.
+\end{equation*}
+
+
+Somit beträgt die effektive Bandbreite des Bandpasses:
+\begin{equation*}
+    \Delta f_{eff} = (11.39 \pm 0.46) \si{\kilo\hertz}.
+\end{equation*}
+Die Unsicherheit von $\Delta f_{eff}$ wird hauptsächlich durch die Unsicherheiten der Grenzfrequenzen
+ $f_{low}$ und $f_{high}$ beeinflusst. Daraus ergibt sich eine Unsicherheit von etwa $0.099$.
+Diese effektive Bandbreite ist entscheidend für die Analyse von Rauschprozessen in elektronischen Systemen, da sie die
+Frequenzbereiche definiert, in denen das System Signale effektiv verarbeiten kann.
+
+Aus den gemessenen Werten ergibt sich $\chi^2 = 122.75$, was zunächst auf eine nicht optimale
+ Anpassung hindeutet. Dies liegt jedoch daran, dass die Messwerte bei kleinen und großen Frequenzen 
+ stark von der idealen Filterkurve abweichen. Dies könnte daran liegen, dass die Filter bei diesen 
+ Frequenzen nicht ideal arbeiten und zusätzliche Verluste oder Verzerrungen auftreten. Dies beeinflusst 
+ jedoch nicht die Bestimmung der effektiven Bandbreite, da diese hauptsächlich durch die mittleren 
+ Frequenzen bestimmt wird. Trotz des hohen $\chi^2$-Wertes liefert die Anpassung dennoch eine gute Näherung für die
+Bestimmung der Grenzfrequenzen und somit der effektiven Bandbreite.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{
+        S[table-format=8.0] 
+        S[table-format=1.2(2)]
+        S[table-format=1.2(2)]
+        S[table-format=1.3(2)]}
+    \toprule
+    \multicolumn{1}{c}{$f$ / Hz}& 
+    \multicolumn{1}{c}{$\mathrm{RMS}_{in}$ / V}& 
+    \multicolumn{1}{c}{$\mathrm{RMS}_{out}$ / V}& 
+    \multicolumn{1}{c}{$G(f)$}\\
+    \midrule
+2             & 7.51 \pm 0.38  & 0.21 \pm 0.01  & 0.028 \pm 0.002 \\
+5             & 7.49 \pm 0.37  & 0.21 \pm 0.01  & 0.027 \pm 0.002 \\
+8             & 7.50 \pm 0.38  & 0.21 \pm 0.01  & 0.028 \pm 0.002 \\
+20            & 7.46 \pm 0.37  & 0.20 \pm 0.01  & 0.027 \pm 0.002 \\
+50            & 7.44 \pm 0.37  & 0.21 \pm 0.01  & 0.028 \pm 0.002 \\
+80            & 7.40 \pm 0.37  & 0.21 \pm 0.01  & 0.028 \pm 0.002 \\
+200           & 7.12 \pm 0.36  & 0.35 \pm 0.02  & 0.049 \pm 0.003 \\
+500           & 7.40 \pm 0.37  & 1.90 \pm 0.10  & 0.257 \pm 0.018 \\
+800           & 7.48 \pm 0.37  & 4.00 \pm 0.20  & 0.535 \pm 0.038 \\
+2000          & 7.11 \pm 0.36  & 7.22 \pm 0.36  & 1.015 \pm 0.072 \\
+5000          & 7.47 \pm 0.37  & 7.27 \pm 0.36  & 0.973 \pm 0.069 \\
+8000          & 7.46 \pm 0.37  & 6.30 \pm 0.32  & 0.845 \pm 0.060 \\
+20000         & 7.43 \pm 0.37  & 1.79 \pm 0.09  & 0.241 \pm 0.017 \\
+50000         & 7.42 \pm 0.37  & 0.34 \pm 0.02  & 0.046 \pm 0.003 \\
+80000         & 7.41 \pm 0.37  & 0.23 \pm 0.01  & 0.031 \pm 0.002 \\
+200000        & 7.33 \pm 0.37  & 0.20 \pm 0.01  & 0.028 \pm 0.002 \\
+500000        & 7.27 \pm 0.36  & 0.27 \pm 0.01  & 0.038 \pm 0.003 \\
+800000        & 7.13 \pm 0.36  & 0.91 \pm 0.05  & 0.128 \pm 0.009 \\
+2000000       & 7.42 \pm 0.37  & 0.45 \pm 0.02  & 0.061 \pm 0.004 \\
+5000000       & 7.75 \pm 0.39  & 0.21 \pm 0.01  & 0.027 \pm 0.002 \\
+8000000       & 7.99 \pm 0.40  & 0.21 \pm 0.01  & 0.026 \pm 0.002 \\
+10000000      & 6.70 \pm 0.34  & 0.21 \pm 0.01  & 0.031 \pm 0.002 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Experimentelle Verstärkung $G(f)$ in Abhängigkeit der Frequenz $f$.}
+    \label{tab:eff_Bandbreite}
+\end{table}

@@ -50,7 +50,7 @@ In \cref{fig:johnson_xy_mode} ist die XY-Darstellung des Johnson-Rauschens gegen
     \caption{XY-Darstellung des Johnson-Rauschens und des quadrierten Signals am Monitor-Ausgang des Multipliers}\label{fig:johnson_xy_mode}
 \end{figure}
 % ----
-\section{Abhängigkeit des Johnson-Rauschens von Widerstand}
+\section[Johnson-Rauschen (Widerstand)]{Abhängigkeit des Johnson-Rauschens von Widerstand}
 % ----
 Um den linearen Zusammenhang zwischen dem Johnson-Rauschen und dem Widerstand gemäß Nyquist-Formel (\cref{equ:nyquist}) zu untersuchen, wird das Ausgangssignal des Multipliers für verschiedene Widerstandswerte $R$ gemessen. Hierzu werden die Widerstände der LLE-Box auf $R_{\mathrm{in}} = R$ und $R_f = \qty{1}{\kilo\ohm}$ eingestellt. Die Grenzfrequenzen der HLE-Box bleiben unverändert bei $f_{\mathrm{LP}} = \qty{10}{\kilo\hertz}$ und $f_{\mathrm{HP}} = \qty{1}{\kilo\hertz}$\\
 Die Messung wurde bei Raumtemperatur $T = \qty{21.4 \pm 0.2}{\degreeCelsius} = \qty{294.55 \pm 0.2}{\kelvin}$ durchgeführt. Die gemessenen Ausgangsspannungen des Multipliers $V_{\mathrm{out}}$ sind in \cref{tab:johnson_widerstand} aufgelistet.
@@ -168,7 +168,7 @@ Alle diese Werte weichen stark vom Literaturwert $k_B^{\mathrm{lit}} = \qty{1.38
 Neben möglich Fehlerhafter Messung und Störungen (die Werte $V_{\mathrm{DMM}}$ wurden schon allein durch Lautstärke beeinflusst) könnte ein weiterer Faktor der Temperaturunterschied der Widerstände sein. So heizen sich die kleineren Widerstände mehr auf, wodurch der angenommene Temperaturwert von $T = \qty{21.4\pm 0.2}{\degreeCelsius}$ zu gering geschätzt ist. Dies sieht man gut durch die Anpassungsgerade, welche einen weitaus steileren Anstieg ausweist, als wenn der Wert für $R=\qty{1}{\mega\ohm}$ berücksichtigt wird. Ein weiteres Indiz hierfür ist der \enquote{abgeflachte} Wert für eben diesen Widerstand. Wird dieser Widerstand mitberücksichtig, dann gleicht das den Temperaturanstieg für die kleineren Widerstände (wenn auch nur geringfügig) aus, wodurch der Wert für die Boltzmannkonstante besser angenähert wird.\\
 Dies könnte mit einer Messung für Widerstände zwischen $\SIrange{100}{999}{\kilo\ohm}$ bestätigt oder widerlegt werden. 
 % ----
-\section{Abhängigkeit des Johnson-Rauschens von der Bandbreite}
+\section[Johnson-Rauschen (Bandbreite)]{Abhängigkeit des Johnson-Rauschens von der Bandbreite}
 Analog zum Widerstand beschreibt die Nyquist-Formel \cref{equ:nyquist} die lineare Abhängigkeit des Johnson-Rauschens von der Bandbreite. Zur Untersuchung dieser Beziehung wird an der HLE-Box verschiedene Hoch- und Tiefpasskonfigurationen eingestellt, um die Bandbreite zu variieren. Zur Reduzierung äußerer Einflüsse und externer Rauschquellen wurde ein $R = \qty{1}{\mega\ohm}$ Widerstand verwendet. Die resultierende Ausgangsspannung wird vermessen (\cref{tab:johnson_bandbreite}) und gegen die Bandbreite aufgetragen \cref{fig:johnson_bandbreite}.
 \begin{table}[h!]
     \centering
