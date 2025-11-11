@@ -73,12 +73,14 @@ und sind in Abbildung \ref{fig:eff_Bandbreite_plot} dargestellt.
     f_{high} &= ( 0.89 \pm 0.02) \si{\kilo\hertz}
 \end{align*}
 Mit diesen Werten lässt sich die effektive Bandbreite $\Delta f_{eff}$ des Bandpasses berechnen:
-\begin{equation}
-    \Delta f_{eff} = \int_0^{\infty} G^2(f) df = \int_0^{\infty} \left(\frac{f}{f_{high}} \cdot \frac{1}{\sqrt{1+(f/f_{high})^4}} \cdot \frac{1}{\sqrt{1+(f/f_{low})^4}}\right)^2 df.
-\end{equation}
-\begin{equation*}
-    \Delta f_{eff} = \frac{\sqrt{2} \pi f_{low}^4}{4(f_{hoch}+f_{low})(f_{low}^2 + f_{high}^2)}
-\end{equation*}
+\begin{align}
+    \Delta f_{eff} = \int_0^{\infty} G^2(f) df &= \int_0^{\infty} \left(\frac{f}{f_{high}} \cdot \frac{1}{\sqrt{1+(f/f_{high})^4}} \cdot \frac{1}{\sqrt{1+(f/f_{low})^4}}\right)^2 df\\
+    \Delta f_{eff} &= \frac{\sqrt{2} \pi f_{low}^4}{4(f_{hoch}+f_{low})(f_{low}^2 + f_{high}^2)}\\
+    \sigma_{\Delta f} &= \sqrt{
+        \left(\frac{\partial \Delta f}{\partial f_l}\cdot \sigma_{f_l}\right)^2 +
+        \left(\frac{\partial \Delta f}{\partial f_h}\sigma_{f_h}\right)^2
+    }
+\end{align}
 Dieses Integral kann numerisch ausgewertet werden und ergibt:
 \begin{equation*}
     \Delta f_{eff} \approx 11.39  \si{\kilo\hertz}.

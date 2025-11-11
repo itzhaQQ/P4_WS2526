@@ -1,15 +1,15 @@
 \chapter{Johnson-Rauschen}
 % ----
 In diesem Kapitel wird das Johnson-Rauschen in Widerständen untersucht.\\ 
-Das Johnson-Rauschen entsteht durch die thermische Fluktuation der Ladungsträger in einem ohmschen Widerstand und führt zu zufälligen Spannungsschwankungen über dem Widerstand. Diese Spannungsschwankungen sind proportional zum Widerstand $R$, sowie seiner Temperatur $T$ und werden durch die Nyquist-Beziehung\cite{paper} beschrieben:
+Das Johnson-Rauschen entsteht durch die thermische Fluktuation der Ladungsträger in einem ohmschen Widerstand und führt zu zufälligen Spannungsschwankungen über dem Widerstand. Diese Spannungsschwankungen sind proportional zum Widerstand $R$, sowie dessen Temperatur $T$ und werden durch die Nyquist-Beziehung\cite{paper} beschrieben:
 \begin{equation}
-    \langle V^2 \rangle = 4 k_B T R \Delta f, \label{equ:nyquist}
+    \langle V^2 \rangle = 4 k_B T R \Delta f \label{equ:nyquist}
 \end{equation}
 wobei $\langle V^2 \rangle$ die mittlere quadratische (MS \enquote{mean square}) Spannung, $k_B$ die Boltzmann-Konstante und $\Delta f$ die effektive Bandbreite des Messsystems ist.
 % ----
 \section{Visualisierung des Johnson-Rauschens}
 % ----
-Zunächst wird das Johnson-Rauschen visuell dargestellt. Da es nur eine sehr geringe Signalstärke aufweist, wird das Rauschsignal mit einem speziellen Vorverstärker (\cref{fig:johnson_lle}), einem nicht-invertierenden Operationsverstärker eingebaut in die \enquote{\texttt{Low-Level electronics}-Box} (LLE), verstärkt. \\
+Zunächst wird das Johnson-Rauschen visuell dargestellt. Da es nur eine sehr geringe Signalstärke aufweist, wird das Rauschsignal mit einem speziellen Vorverstärker (\cref{fig:johnson_lle}), einem nicht-invertierenden Operationsverstärker, eingebaut in die \enquote{\texttt{Low-Level electronics}-Box} (LLE), verstärkt. \\
 \begin{figure}[h]
     \centering
     \subcaptionbox{Vorverstärker der LLE-Box}{\includegraphics[keepaspectratio, width=5cm]{figs/schalt_amplifier.png}}
@@ -17,7 +17,7 @@ Zunächst wird das Johnson-Rauschen visuell dargestellt. Da es nur eine sehr ger
     \caption{Schaltpläne zur Verstärkung des Johnson-Rauschens~\cite{praktikum4_atome}}\label{fig:johnson_lle}
 \end{figure}
 
-Die Verstärkerelektronik besteht aus zwei Stufen, sodass eine Gesamtverstärkung von $G_1 = 600$ erreicht wird. Das verstärkte Rauschsignal gelangt hiernach an die HLE-Box, einem Bandpass welcher gezielt die relevanten Frequenzbereiche herausfiltert und einem einstellbaren Verstärker (\enquote{Gain}), und wird schließlich auf dem Oszilloskop dargestellt (\cref{fig:johnson_aufbau}).
+Die Verstärkerelektronik besteht aus zwei Stufen, sodass eine Gesamtverstärkung von $G_1 = 600$ erreicht wird. Das verstärkte Rauschsignal gelangt hiernach an die HLE-Box, einem Bandpass, welcher gezielt die relevanten Frequenzbereiche herausfiltert und einem einstellbaren Verstärker (\enquote{Gain}), und wird schließlich auf dem Oszilloskop dargestellt (\cref{fig:johnson_aufbau}).
 \begin{figure}[h]
     \centering
     \subcaptionbox{Schaltplan zur Messung des \\ Johnson-Rauschens~\cite{praktikum4_atome}}{\includegraphics[keepaspectratio,width=0.48\textwidth]{figs/johnson_hle.png}}
@@ -42,7 +42,7 @@ quadriert. Das Ausgangssignal des Multipliers wird intern durchgeschleift und ü
     \caption{Schaltplan zur Messung des Johnson-Rauschens mit der HLE-Box~\cite{praktikum4_atome}}\label{fig:johnson_hle_messung}
 \end{figure}
 
-Um die Funktionsweise des Multipliers zu überprüfen wird zunächst das Monitor-Signal des Multipliers mit dem Kanal 2 des Oszilloskops verbunden. Dieses Signal entspricht dem quadrierten Eingangssignal des Multipliers, also dem quadrierten Rauschsignal der HLE-Box. An Kanal 1 wird das Ausgangssignal der HLE-Box, also das Johnson-Rauschen, geschlossen und der XY-Modus des Oszilloskops eingerichtet. Hierbei wurde geachtet, dass die Ausgabe auf dem Digitalmultimeter (DMM) nur Werte zwischen $\SIrange{0.6}{1.2}{\volt}$ anzeigt, da nur in deisem Bereich die Ausgangssignale stabil und linear zum Eingangsrauschen sind.\\
+Um die Funktionsweise des Multipliers zu überprüfen, wird zunächst das Monitor-Signal des Multipliers mit dem Kanal 2 des Oszilloskops verbunden. Dieses Signal entspricht dem quadrierten Eingangssignal des Multipliers, also dem quadrierten Rauschsignal der HLE-Box. An Kanal 1 wird das Ausgangssignal der HLE-Box, also das Johnson-Rauschen, geschlossen und der XY-Modus des Oszilloskops eingerichtet. Hierbei wurde geachtet, dass die Ausgabe auf dem Digitalmultimeter (DMM) nur Werte zwischen $\SIrange{0.6}{1.2}{\volt}$ anzeigt, da nur in diesem Bereich die Ausgangssignale stabil und linear zum Eingangsrauschen sind.\\
 In \cref{fig:johnson_xy_mode} ist die XY-Darstellung des Johnson-Rauschens gegen das quadrierte Signal des Multipliers zu sehen. Es zeigt sich, dass das Ausgangssignal des Multipliers proportional zum Quadrat des Eingangssignals ist, was die Funktionsweise des Multipliers bestätigt.
 \begin{figure}[h]
     \centering
@@ -53,7 +53,7 @@ In \cref{fig:johnson_xy_mode} ist die XY-Darstellung des Johnson-Rauschens gegen
 \section[Johnson-Rauschen (Widerstand)]{Abhängigkeit des Johnson-Rauschens von Widerstand}
 % ----
 Um den linearen Zusammenhang zwischen dem Johnson-Rauschen und dem Widerstand gemäß Nyquist-Formel (\cref{equ:nyquist}) zu untersuchen, wird das Ausgangssignal des Multipliers für verschiedene Widerstandswerte $R$ gemessen. Hierzu werden die Widerstände der LLE-Box auf $R_{\mathrm{in}} = R$ und $R_f = \qty{1}{\kilo\ohm}$ eingestellt. Die Grenzfrequenzen der HLE-Box bleiben unverändert bei $f_{\mathrm{LP}} = \qty{10}{\kilo\hertz}$ und $f_{\mathrm{HP}} = \qty{1}{\kilo\hertz}$\\
-Die Messung wurde bei Raumtemperatur $T = \qty{21.4 \pm 0.2}{\degreeCelsius} = \qty{294.55 \pm 0.2}{\kelvin}$ durchgeführt. Die gemessenen Ausgangsspannungen des Multipliers $V_{\mathrm{out}}$ sind in \cref{tab:johnson_widerstand} aufgelistet.
+Die Messung wurde bei Raumtemperatur $T = \qty{21.4 \pm 0.2}{\degreeCelsius} = \qty{294.55 \pm 0.2}{\kelvin}$ durchgeführt. Die gemessenen Ausgangsspannungen des Multipliers $V_{\mathrm{DMM}}$ sind in \cref{tab:johnson_widerstand} aufgelistet.
 \begin{table}[h!]
     \centering
     \begin{tabular}{
@@ -81,12 +81,12 @@ Die Messung wurde bei Raumtemperatur $T = \qty{21.4 \pm 0.2}{\degreeCelsius} = \
     \caption{Messwerte der Johnson-Rauschspannung $V_J^2$ für verschiedene Widerstände $R$ bei Verstärkung $G_2$. Für $\Delta R$ wurde ein Fehler von $\qty{1}{\percent}$ angenommen.}
     \label{tab:johnson_widerstand}
 \end{table}
-Um störende Einflüsse, z.B. Eigenrauschen nachgeschalteter Verstärkerstufen, zu minimieren, wurde das Verstärkerverhältnis $G_2$ als fehlerfrei angenommen, während für die Spannung am DMM eine konstante Unsicherheit von $\Delta U_{\mathrm{DMM}}=\qty{0.005}{\volt}$ aufgrund der Fluktuation der Werte beim ablesen berücksichtigt wurde.\\
+Um störende Einflüsse, z.B. Eigenrauschen nachgeschalteter Verstärkerstufen, zu minimieren, wurde das Verstärkerverhältnis $G_2$ als fehlerfrei angenommen, während für die Spannung am DMM eine konstante Unsicherheit von $\Delta U_{\mathrm{DMM}}=\qty{0.005}{\volt}$ aufgrund der Fluktuation der Werte beim Ablesen berücksichtigt wurde.\\
 Die Werte für die Verstärkung $G_2$ sind so gewählt, dass die Ausgangsspannung des Multipliers stets im linearen Bereich zwischen $\SI{0.6}{\volt}$ und $\SI{1.2}{\volt}$ liegt.\\
 Der vom DMM ausgegebene Wert hängt vom quadratischen Mittelwert der Rauschspannung am Eingang des Multipliers ab. Um die Johnson-Rauschspannung $V_J^2$ zu berechnen, wird der gemessene Wert mit den Verstärkungsfaktoren und dem Divisor des Multipliers skaliert:
 \begin{align}
     V_{\mathrm{DMM}} &= \frac{\overline{V_J^2}\cdot (600\cdot G_2)^2}{\qty{10}{\volt}}\label{equ:johnson_dmm}\\
-    \Leftrightarrow V_J^2 &= V_{\mathrm{DMM}} \cdot \SI{10}{\volt} \cdot \frac{1}{G_2^2}
+    \Leftrightarrow V_J^2 &= \frac{V_{\mathrm{DMM}} \cdot \SI{10}{\volt}}{(600\cdot G_2)^2}
 \end{align}
 Um zusätzliche Rauschkomponenten zu isolieren, die nicht als Johnson-Rauschen klassifiziert werden können, und unter der Annahme, dass $\overline{V_J^2}$ zusätzliche Störkomponenten enthält, wird \cref{equ:johnson_dmm} um eine  weitere Komponente erweitert:
 \begin{equation}
@@ -115,9 +115,9 @@ gelegt, wobei die Steigung $m$ und der Achsenabschnitt $b$ durch die lineare Reg
 \begin{figure}[h]
     \centering
     \includegraphics[keepaspectratio, width=0.7\linewidth]{plots/johnson_rauschen_widerstand_norm_residuen_log.pdf}
-    \caption{Graphische Darstellung der Widerstandsabhängigkeit des Johnson-Rauschens $V_J^2$ mit linearer Regression nach \cref{equ:johnson_linear} und normierten Residuen.\\(halblogarithmische Darstellung)}\label{fig:johnson_widerstand_log}
+    \caption{Graphische Darstellung der Widerstandsabhängigkeit des Johnson-Rauschens $V_J^2$ mit linearer Regression nach \cref{equ:johnson_linear} und normierten Residuen.\\(halblogarithmische Darstellung zur besseren Darstellung der Messwerteverteilung)}\label{fig:johnson_widerstand_log}
 \end{figure}
-Zur überprüfung der Güte der linearen Regression wurden im Anschluss an die Auslgeichrechnung die Residuen berechnet und aufgetragen. Diese geben an, wie stark einzelne Messwerte von der Anpassungsgeraden abweichen.\\
+Zur Überprüfung der Güte der linearen Regression wurden im Anschluss an die Auslgeichrechnung die Residuen berechnet und aufgetragen. Diese geben an, wie stark einzelne Messwerte von der Anpassungsgeraden abweichen.\\
 Für jeden Messpunkt gilt:
 \begin{equation}
     r_i = y_i -(mR_i + b)
@@ -131,7 +131,7 @@ Dabei wird jedes Residuum durch seine kombinierte Unsicherheit geteilt, um seine
 Die Unsicherheit wird hier in guter Näherung $\sigma_{r,i}=\sigma_{yi}$ angenommen, da die Fitunsicherheit klein gegenüber dem Messfehler ist. Die normierten Residuen sollten im Idealfall zufällig um Null streuen und im Bereich $-2\leq r_i^{\mathrm{norm}}\leq 2$ liegen, um die Richtigkeit des Modells und realistische Einschätzung der Messfehler zu bestätigen.
 \vspace{0.2cm}
 
-Anhand der Messpunkte wird deutlich, dass für große Widerstände die Werte für $V_J^2$ abflachen. Aus diesem Grund wurde die Anpassung mit 3 Messsätzen durchgeführt welche folgende Fitparameter liefern:
+Anhand der Messpunkte wird deutlich, dass für große Widerstände die Werte für $V_J^2$ abflachen. Aus diesem Grund wurde die Anpassung mit 3 Messsätzen durchgeführt, welche folgende Fitparameter liefern:
 \begin{itemize}
     \item Mit allen Messwerten:
     \begin{itemize}
@@ -158,18 +158,18 @@ Die Boltzmann Konstante kann nun aus der Steigung berechnet werden zu:
   k_B = \frac{m}{4T\Delta f}
   = \left\{
   \begin{array}{@{}l@{\quad}l@{}}
-    \qty{2.359(97)e-23}{\joule\per\kelvin} & \text{,für alle Messwerte},\\[4pt]
-    \qty{1.135(46)e-22}{\joule\per\kelvin} & \text{,ohne den letzten Messwert},\\[4pt]
-    \qty{1.394(58)e-22}{\joule\per\kelvin} & \text{,ohne die letzten beiden Messwerte.}
+    \qty{2.359(97)e-23}{\joule\per\kelvin} & \text{,für alle Messwerte}\\[4pt]
+    \qty{1.135(46)e-22}{\joule\per\kelvin} & \text{,ohne den letzten Messwert}\\[4pt]
+    \qty{1.394(58)e-22}{\joule\per\kelvin} & \text{,ohne die letzten beiden Messwerte}
   \end{array}
   \right.
 \end{equation*}
 Alle diese Werte weichen stark vom Literaturwert $k_B^{\mathrm{lit}} = \qty{1.380649e-23}{\joule\per\kelvin}$\cite{NIST} ab und er liegt auch in keinem der Fehlerbereiche. Jedoch ist beachtlich, dass der ermittelte Wert der Boltzmann Konstanten unter Beachtung aller Messwerte näher am Literaturwert liegt, als die beiden Messsätze ohne letzten 1 bzw. 2 Punkte, obwohl die Güte der Anpassungsgeraden bei diesen weit höher sind.\\
-Neben möglich Fehlerhafter Messung und Störungen (die Werte $V_{\mathrm{DMM}}$ wurden schon allein durch Lautstärke beeinflusst) könnte ein weiterer Faktor der Temperaturunterschied der Widerstände sein. So heizen sich die kleineren Widerstände mehr auf, wodurch der angenommene Temperaturwert von $T = \qty{21.4\pm 0.2}{\degreeCelsius}$ zu gering geschätzt ist. Dies sieht man gut durch die Anpassungsgerade, welche einen weitaus steileren Anstieg ausweist, als wenn der Wert für $R=\qty{1}{\mega\ohm}$ berücksichtigt wird. Ein weiteres Indiz hierfür ist der \enquote{abgeflachte} Wert für eben diesen Widerstand. Wird dieser Widerstand mitberücksichtig, dann gleicht das den Temperaturanstieg für die kleineren Widerstände (wenn auch nur geringfügig) aus, wodurch der Wert für die Boltzmannkonstante besser angenähert wird.\\
+Neben möglicher fehlerhafter Messung und Störungen (die Werte $V_{\mathrm{DMM}}$ wurden schon allein durch Lautstärke beeinflusst), könnte ein weiterer Faktor der Temperaturunterschied der Widerstände sein. So heizen sich die kleineren Widerstände mehr auf, wodurch der angenommene Temperaturwert von $T = \qty{21.4\pm 0.2}{\degreeCelsius}$ zu gering geschätzt ist. Dies sieht man gut durch die Anpassungsgerade, welche einen weitaus steileren Anstieg ausweist, als wenn der Wert für $R=\qty{1}{\mega\ohm}$ berücksichtigt wird. Ein weiteres Indiz hierfür ist der \enquote{abgeflachte} Wert für eben diesen Widerstand. Wird dieser Widerstand mitberücksichtig, dann gleicht das den Temperaturanstieg für die kleineren Widerstände (wenn auch nur geringfügig) aus, wodurch der Wert für die Boltzmannkonstante besser angenähert wird.\\
 Dies könnte mit einer Messung für Widerstände zwischen $\SIrange{100}{999}{\kilo\ohm}$ bestätigt oder widerlegt werden. 
 % ----
 \section[Johnson-Rauschen (Bandbreite)]{Abhängigkeit des Johnson-Rauschens von der Bandbreite}
-Analog zum Widerstand beschreibt die Nyquist-Formel \cref{equ:nyquist} die lineare Abhängigkeit des Johnson-Rauschens von der Bandbreite. Zur Untersuchung dieser Beziehung wird an der HLE-Box verschiedene Hoch- und Tiefpasskonfigurationen eingestellt, um die Bandbreite zu variieren. Zur Reduzierung äußerer Einflüsse und externer Rauschquellen wurde ein $R = \qty{1}{\mega\ohm}$ Widerstand verwendet. Die resultierende Ausgangsspannung wird vermessen (\cref{tab:johnson_bandbreite}) und gegen die Bandbreite aufgetragen \cref{fig:johnson_bandbreite}.
+Analog zum Widerstand beschreibt die Nyquist-Formel \cref{equ:nyquist} die lineare Abhängigkeit des Johnson-Rauschens von der Bandbreite. Zur Untersuchung dieser Beziehung wird an der HLE-Box verschiedene Hoch- und Tiefpasskonfigurationen eingestellt, um die Bandbreite zu variieren. Zur Reduzierung äußerer Einflüsse und externer Rauschquellen wurde ein $R = \qty{1}{\mega\ohm}$ Widerstand verwendet. Die resultierende Ausgangsspannung wird vermessen (\cref{tab:johnson_bandbreite}) und gegen die Bandbreite aufgetragen (\cref{fig:johnson_bandbreite}).
 \begin{table}[h!]
     \centering
     \begin{tabular}{
@@ -232,4 +232,4 @@ Hieraus lässt sich die Boltzmann Konstante ermitteln zu:
     k_B = \frac{m}{4T\Delta f} = \qty{2.087(26)e-24}{\joule\per\kelvin}
 \end{equation*}
 Auch hier weicht der ermittele Wert stark vom Literaturwert ab.\\
-Dies lässt sich, abgesehen von fehlerhafter Messung und den im vorherigen Abschnitt benannten gründen, durch nicht ausreichend Ausgebreitete Messpunkte begründen, wodurch im Grunde genommen nur eine Anpassung mit 4 Werte-Cluster durchgeführt wird. Auch wurde, wie an \cref{fig:johnson_bandbreite} ersichtlich ein zu geringer Fehler angenommen, wodurch entsprechend auch die Güte der Anpassung abnimmt.
+Dies lässt sich, abgesehen von fehlerhafter Messung und den im vorherigen Abschnitt benannten Gründen, durch nicht ausreichend ausgebreitete Messpunkte begründen, wodurch letzendlich nur eine Anpassung mit 4 Werte-Cluster durchgeführt wird. Auch wurde, wie an \cref{fig:johnson_bandbreite} ersichtlich, ein zu geringer Fehler angenommen, wodurch entsprechend auch die Güte der Anpassung abnimmt.

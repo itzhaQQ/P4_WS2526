@@ -1,6 +1,6 @@
 \chapter{Schrotrauschen}
-Schrotrauschen entsteht aufgrund der zufälligen statistischen Fluktuation diskreter elektrischer Ladungsträger. Er tritt auf, sobald unkorrelierte Elektronen eine Potentialbarriere (z.B. Photodiode) überwinden. Dieser Prozess ist statistischer Natur und folgt der Poisson-Verteilung.\\
-In diesem Versuchsteli wird ein solcher Elektronenstrom durch den Photoeffekt erzeugt. Eine Glühlampe emittiert diskrete Photonen, welche auf eine Photodiode treffen und dort Elektronen rauslösen, welche wiederum Stromfluktuationen erzeugen.\\
+Schrotrauschen entsteht aufgrund der zufälligen statistischen Fluktuation diskreter elektrischer Ladungsträger. Es tritt auf, sobald unkorrelierte Elektronen eine Potentialbarriere (z.B. Photodiode) überwinden. Dieser Prozess ist statistischer Natur und folgt der Poisson-Verteilung.\\
+In diesem Versuchsteil wird ein solcher Elektronenstrom durch den Photoeffekt erzeugt. Eine Glühlampe emittiert diskrete Photonen, welche auf eine Photodiode treffen und dort Elektronen rauslösen, welche wiederum Stromfluktuationen erzeugen.\\
 Diese lassen sich über die Schottky-Formel quantifizieren:
 \begin{equation}
     \overline{\delta_i^2} = 2ei_{\mathrm{dc}}\Delta f\label{equ:schottky}
@@ -14,13 +14,13 @@ mit der Verstärkungsfunktion des verwendeten Tiefpassfilters:
 \begin{equation}
     G(f) = \left( 1 + \left( \frac{f}{f_l} \right)^4 \right)
 \end{equation}
-Der Versuchsaufbau zur Erzeugung des Photostroms ist in \cref{fig:schrot_schema} dargestellt. Die bipolare Spannungsquelle versorgt die Glühlampe, welche Photonen emittiert und die Photodiode bestrahlt die wiederum einen Gleichstrom $i_{\mathrm{dc}}$ erzeugt.
+Der Versuchsaufbau zur Erzeugung des Photostroms ist in \cref{fig:schrot_schema} dargestellt. Die bipolare Spannungsquelle versorgt die Glühlampe, welche Photonen emittiert und die Photodiode bestrahlt, die wiederum einen Gleichstrom $i_{\mathrm{dc}}$ erzeugt.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\linewidth]{figs/schrot_schaltung.png}
     \caption{Schaltschema für die LLE-Box zur erzeugung des Photostroms mittels Glühlampe und Photodiode~\cite{praktikum4_atome}}\label{fig:schrot_schema}
 \end{figure}
-Die Photodiode ist über einen invertierenden Verstärker mit Rückkopplungswiderstand $R_f = \qty{10}{\kilo\ohm}$ in der LLE-Box verschaltet. Der erzeugt Photostrom erzeugt eine proportionale Spannung:
+Die Photodiode ist über einen invertierenden Verstärker mit Rückkopplungswiderstand $R_f = \qty{10}{\kilo\ohm}$ in der LLE-Box verschaltet. Der erzeugte Photostrom liefert eine proportionale Spannung:
 \begin{equation}
     V_{\mathrm{Monitor}} = -R_f\cdot i_{\mathrm{dc}}, \quad \Delta V_{\mathrm{Monitor}} = R_f\cdot \Delta i_{\mathrm{dc}}
 \end{equation}
@@ -36,7 +36,7 @@ Das Ausgangssignal der HLE-Box $V_{\mathrm{Meter}}$ ist proportional zur mittler
 \begin{equation}
     \overline{\delta_i^2} = \frac{\overline{V_{\mathrm{Meter}}(t)}\cdot \qty{10}{\volt}}{(100\cdot G_2\cdot R_f)^2},\quad \Delta\overline{\delta_i^2} = \frac{\Delta\overline{V_{\mathrm{Meter}}(t)}\cdot \qty{10}{\volt}}{(100\cdot G_2\cdot R_f)^2}
 \end{equation}
-Zur Messung des Schrotrauschens wird der Tiefpass der HLE-Box auf eine Grenzfreuqenz $f_{\mathrm{gr}} = \qty{100}{\kilo\hertz}$ eingestellt und alle Schalter auf AC eingestellt. Die Verstärkung $G_2$ wird so gewählt, dass das Signal $\overline{V_{\mathrm{Meter}}}$ Werte im Bereich von \SIrange{0.6}{1.2}{\volt} anzeigt, um im linearen Bereich zu bleiben.\\
+Zur Messung des Schrotrauschens wird der Tiefpass der HLE-Box auf eine Grenzfreuqenz $f_{\mathrm{gr}} = \qty{100}{\kilo\hertz}$ und alle Schalter auf AC eingestellt. Die Verstärkung $G_2$ wird so gewählt, dass das Signal $\overline{V_{\mathrm{Meter}}}$ Werte im Bereich von \SIrange{0.6}{1.2}{\volt} anzeigt, um im linearen Bereich zu bleiben.\\
 Das Rauschen wurde nun auf einem Oszilloskop sichtbar gemacht (\cref{fig:schrot_oszi}).
 \begin{figure}[h]
     \centering
@@ -46,16 +46,17 @@ Das Rauschen wurde nun auf einem Oszilloskop sichtbar gemacht (\cref{fig:schrot_
 % ----
 \section{Untergrundbeiträge}
 % ----
-Um sicherzustellen, dass die Messungen nicht von anderen Rauschquellen abstammen (Johnson-Rauschen am Widerstand, Offset-Spannung am Verstärker, Feedback dem DMM am Monitor-Ausang des Vorverstärkers) muss eine Untergrundmessung durchgeführt werden.\\
+Um sicherzustellen, dass die Messungen nicht von anderen Rauschquellen abstammen (Johnson-Rauschen am Widerstand, Offset-Spannung am Verstärker, Feedback dem DMM am Monitor-Ausang des Vorverstärkers), muss eine Untergrundmessung durchgeführt werden.\\
 Die Lampenspannung wird hierfür auf Null gesetzt und der Regler $G_2$ auf $1000$ eingestellt.\\
 Gemessen wurde eine Augangsspannung:
 \begin{equation*}
     V_{\mathrm{Meter}, 0} = \qty{31.7\pm 0.1}{\milli\volt}
 \end{equation*} 
-woraus sich eine mittlere Rauschleistung von 
+woraus sich eine mittlere Rauschleistung von: 
 \begin{equation*}
     \overline{\delta_{i,\mathrm{offset}}^2} = \qty{3.17(1)e-19}{\volt}
 \end{equation*}
+ergibt.
 Der gemessene Fehler hängt jedoch nicht nur von der HLE-Box, sondern auch vom Vorverstärker ab. Deswegen wird eine weitere Spannungsmessung bei abgeschalteter Glühlampe am Monitor Ausgang der LLE-Box durchgeführt.\\
 Hier beträgt $V_{\mathrm{Monitor}, 0}$ jedoch Null und hat somit keinen Beitrag zu Gleichstrom $i_\mathrm{dc}$. Auch wurde der Einfluss des DMM am Monitor-Ausgang des Vorverstärker untersucht, in dem er mehrmals aus- und eingesteckt wurde, jedoch konnte auch hier kein Beitrag notiert und somit der Einfluss vernachlässigt werden.
 % ----
@@ -115,7 +116,7 @@ was für ein zu gutes Anpassungsmodell spricht. Dies lässt sich durch Betrachtu
 % ----
 \section[Schrotrauschen (Bandbreite)]{Abhängigkeit des Schrotrauschens von der Bandbreite}
 % ---
-Um die Abhängigkeit des Schrotrauschens von der Bandbreite und somit seine \enquote{Weißheit}(also konstante Rauschleistung über die Bandbreite) zu untersuchen wird nun der Gleichstrom $i_\mathrm{dc}$ konstant gehalten, in dem $V_{\mathrm{Monitor}}=\qty{10.02\pm 0.05}{\volt}$ eingestellt wurde. Die Grenzfrequenz des Tiefpasses $f_l$ wird nun variiert, wobei geachtet wurde, dass die Verstärkung $G_2$ eine Ausgangsspannung der HLE-Box zwischen $\SIrange{0.6}{1.2}{\volt}$ ermöglicht. Der Widerstand der LLE-Box wurde auf $R_f = \qty{10}{\kilo\ohm}$ eingestellt und die Werte für die mittlere Stromschwankung gemäß \cref{equ:schrot_delta} ermittelt (\cref{tab:schrot_bandbreite}).
+Um die Abhängigkeit des Schrotrauschens von der Bandbreite und somit seine \enquote{Weißheit}(also konstante Rauschleistung über die Bandbreite) zu untersuchen, wird nun der Gleichstrom $i_\mathrm{dc}$ konstant gehalten, indem $V_{\mathrm{Monitor}}=\qty{10.02\pm 0.05}{\volt}$ eingestellt wurde. Die Grenzfrequenz des Tiefpasses $f_l$ wird nun variiert, wobei geachtet wurde, dass die Verstärkung $G_2$ eine Ausgangsspannung der HLE-Box zwischen $\SIrange{0.6}{1.2}{\volt}$ ermöglicht. Der Widerstand der LLE-Box wurde auf $R_f = \qty{10}{\kilo\ohm}$ eingestellt und die Werte für die mittlere Stromschwankung gemäß \cref{equ:schrot_delta} ermittelt (\cref{tab:schrot_bandbreite}).
 \begin{table}[h!]
     \centering
     \begin{tabular}{
@@ -142,7 +143,7 @@ Um die Abhängigkeit des Schrotrauschens von der Bandbreite und somit seine \enq
     \end{tabular}
     \caption{Messwerte zur Abhängigkeit des Schrotrauschens von der Bandbreite: untere Grenzfrequenz $f_l$, Verstärkung $G_2$, gemessene Spannung $V_\mathrm{Meter}$, Bandbreite $\Delta f$ und mittlere Stromrauschleistung $\overline{\delta_i^2}$.}\label{tab:schrot_bandbreite}
 \end{table}
-Nun wird das Stromschwankungsquadrat gegen die effektive bandbreite aufgetragen und an die Messwerte eine lineare Anpassung der Form $y(x)=mx+b$ durchgeführt (\cref{fig:schrot_bandbreite})
+Nun wird das Stromschwankungsquadrat gegen die effektive Bandbreite aufgetragen und an die Messwerte eine lineare Anpassung der Form $y(x)=mx+b$ durchgeführt (\cref{fig:schrot_bandbreite}).
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\linewidth]{plots/schrot_rauschen_bandbreite.pdf}
@@ -158,17 +159,17 @@ was für eine gelungene Anpassung spricht.
 % ----
 \section{Berechnung der Elementarladung}
 % ----
-Nun kann Anhand der Schottky-Gleichung \cref{equ:schottky} die Elementarladung $e$ anhand der ermittelten Steigungen der Stromschwankungsquadrate berechnet werden:
+Nun kann gemäß der Schottky-Gleichung \cref{equ:schottky} die Elementarladung $e$ anhand der ermittelten Steigungen der Stromschwankungsquadrate berechnet werden:
 \begin{align}
     \overline{\delta_i^2} &= 2ei_{\mathrm{dc}}\Delta f\\
     \Rightarrow e_{\exp, i} &= \frac{\overline{\delta_i^2}}{2i_{\mathrm{dc}}\Delta f} = \left\{
   \begin{array}{@{}l@{\quad}l@{}}
-    \frac{m}{2\Delta f} & \text{,für die Gleichstrommessung},\\[4pt]
-    \frac{m}{2i_\mathrm{dc}} & \text{,für die Bandbreitenmessung},\\[4pt]
+    \frac{m}{2\Delta f} & \text{,für die Gleichstrommessung}\\[4pt]
+    \frac{m}{2i_\mathrm{dc}} & \text{,für die Bandbreitenmessung}\\[4pt]
   \end{array}
   \right.
 \end{align}
-Die effektive Bandbreite für den Gleichstrom ergibt sich aus dem Frequenzintegral
+Die effektive Bandbreite für den Gleichstrom ergibt sich aus dem Frequenzintegral:
 \begin{eqnarray}
     \Delta f = \int_{0}^{\infty} \frac{1}{1+\left(\frac{f}{f_l}\right)^4} = \qty{111.07}{\kilo\hertz}
 \end{eqnarray}
@@ -192,10 +193,10 @@ Die relativen Abweichungen zum Literaturwert von $e_{\mathrm{lit}}= \qty{1.60217
     \multicolumn{1}{c}{$\sigma$-Abweichung}
     \\
     \midrule
-    $i_{\mathrm{dc}} variiert$ & 1.89 \pm 0.4 & 17.9 & 0.7 \\
+    $i_{\mathrm{dc}}$ variiert & 1.89 \pm 0.4 & 17.9 & 0.7 \\
     $\Delta f$ variiert & 1.75 \pm 0.05 & 7.9 & 3.0\\
     \bottomrule
     \end{tabular}
     \caption{Ermittelte Werte der Elementarladung $e$}\label{tab:schrot_elementar}
 \end{table}
-Die $\sigma$-Abweichung für die Gleichstrommessung ist bei $1\sigma$ was für gut geschätzte Fehler spricht, wobei die der Bandbreitenmessung mit $3\sigma$ für zu klein geschätzte Fehler sprechen. Beide Werte liegen jedoch nah bis sehr nah am Literaturwert für die Elementarladung was eine gelungene Durchführung und Auswertung steht.
+Die $\sigma$-Abweichung für die Gleichstrommessung ist bei $1\sigma$, was für gut geschätzte Fehler spricht, wobei die der Bandbreitenmessung mit $3\sigma$ für zu klein geschätzte Fehler sprechen. Beide Werte liegen jedoch nah bis sehr nah am Literaturwert für die Elementarladung, was eine gelungene Durchführung und Auswertung steht.
