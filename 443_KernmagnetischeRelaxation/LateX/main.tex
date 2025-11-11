@@ -1,5 +1,10 @@
 % !TEX root =/home/jaalna/P4_WS2526/443_KernmagnetischeRelaxation/LateX/main.tex
 % !TEX root = /home/jaffar/Desktop/P4_WS2526/443_KernmagnetischeRelaxation/LateX/main.tex
+\documentclass[%
+paper=a4,       % Papiergröße
+fontsize=12pt,  % Schriftgröße
+ngerman         % Option für deutsche Sprache
+]{scrreprt}
 \input{config.tex}
 \addbibresource{refs.bib}
 % === Header =======================
@@ -9,7 +14,7 @@
 \chead{}						% center header
 \ohead{\textbf{\headmark}}		% outer header
 \cfoot*{\pagemark}				% center footer
-\automark{section}				
+\automark{chapter}				
 \KOMAoptions{headsepline=.4pt:19\textwidth}  % 0.4pt thick line, full width
 \renewcommand*\chapterheadstartvskip{\vspace*{-1cm}}
 
@@ -18,6 +23,7 @@
 \begin{document}
 
 \begin{titlepage}
+\sffamily
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \center
 \textsc{\LARGE }\\[1.5cm] % Name of your university/college
@@ -50,13 +56,14 @@
 
 %----------------------------------------------------------------------------------------
 %	LOGO SECTION
-\includegraphics[width=6 cm]{logo.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
+%\includegraphics[width=6 cm]{logo.png}\\[1cm] % Include a department/university logo - this will require the graphicx package
  
 %----------------------------------------------------------------------------------------
 
 \vfill % Fill the rest of the page with whitespace
 
 \end{titlepage}
+\normalfont
 \tableofcontents
 \clearpage
 \clearpage
