@@ -23,33 +23,32 @@ ngerman         % Option für deutsche Sprache
 \begin{document}
 
 \begin{titlepage}
-\sffamily
+%\sffamily
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-\center
-\textsc{\LARGE }\\[1.5cm] % Name of your university/college
+\center\textsc{\LARGE }\\[1.5cm] % Name of your university/college
 \textsc{\LARGE Praktikum 4}\\[0.5cm] % Major heading such as course name
 \textsc{\large Atome, Moleküle, kondensierte Materie}\\[0.5cm] % Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
-\HRule \\[0.4cm]
+\HRule\\[0.4cm]
 { \huge \bfseries Versuch 443: Kernmagnetische Relaxation}\\[0.4cm] % Title of your document
-\HRule \\[0.2cm]
+\HRule\\[0.2cm]
 \Large{\textsc{Gruppe A208}}\\[0.2cm]
  
 %----------------------------------------------------------------------------------------
 %	AUTHOR SECTION
-\begin{minipage}{0.4\textwidth}
-\vspace{0.7em}
-\begin{flushleft} \large
-\textsc{Maria Manuela Vera Fonseca} % Your name
-\end{flushleft}
-\end{minipage}
+%\begin{minipage}{0.4\textwidth}
+%\vspace{0.7em}
+%\begin{flushleft} \large
+%\textsc{Maria Manuela Vera Fonseca} % Your name
+%\end{flushleft}
+%\end{minipage}
 %~
 \begin{minipage}{0.4\textwidth}
-\begin{flushright} \large
+%\begin{flushright} \large
 \textsc{Jaffar Al Naggar}
-\end{flushright}
+%\end{flushright}
 \end{minipage}\\[2.0cm]
 
 {\large Versuchsdurchführung\, 17/18. November 2025 }\\[8cm] % Date, change the \today to a set date if you want to be precise
@@ -61,15 +60,19 @@ ngerman         % Option für deutsche Sprache
 %----------------------------------------------------------------------------------------
 
 \vfill % Fill the rest of the page with whitespace
-
+% chktex-file 1   % to surpress spacing warning
 \end{titlepage}
-\normalfont
+%\normalfont
 \tableofcontents
 \clearpage
 \clearpage
 \setcounter{page}{1}
 \include{Einleitung}
-\include{durchfuhrung}
-\include{auswertung}
+\include{Aufbau}
+\include{Rabi}
+\include{Long_Relax}
+\include{Trans_Relax}
+\include{Fazit}
+\include{tabellen}
 \printbibliography
 \end{document}

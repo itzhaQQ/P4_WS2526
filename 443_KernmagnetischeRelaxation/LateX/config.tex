@@ -1,3 +1,4 @@
+% chktex-file 1 to ignore spacing warning
 % Basics für Codierung und Sprache
 % ===========================================================
 \usepackage{framed}
@@ -141,7 +142,7 @@ backref=false]{hyperref}
 \DeclarePairedDelimiter{\Floor}{\lfloor}{\rfloor}    % aufrunden
 \DeclarePairedDelimiter{\Norm}{\lVert}{\rVert}       % Norm
 \DeclarePairedDelimiter{\sprod}{\langle}{\rangle}    % spitze Klammern
-\DeclarePairedDelimiter{\enbrace}{(}{)}              % runde Klammern
+%\DeclarePairedDelimiter{\enbrace}{(}{)}              % runde Klammern
 \DeclarePairedDelimiter{\benbrace}{\lbrack}{\rbrack} % eckige Klammern
 \DeclarePairedDelimiter{\penbrace}{\{}{\}}           % geschweifte Klammern
 \newcommand{\Underbrace}[2]{{\underbrace{#1}_{#2}}}  % bessere Unterklammerungen
@@ -169,4 +170,4 @@ backref=false]{hyperref}
 \newcommand{\cby}[1]{\colorbox{yellow}{#1}} % yellow colorbox
 \newcommand{\cbb}[1]{\colorbox{black}{#1}} % black colorbox
 
-
+\usepackage{scrhack}
