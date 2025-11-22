@@ -1,7 +1,29 @@
 \chapter{Aufbau und Kalibration}
-
-\section{Section}
-% -----
-\subsection{Subsection}
-
-\subsubsection{Subsubsection}
+% chktex-file 1
+% chktex-file 24
+Zur Untersuchung des Verhaltens der Spin-$\frac{1}{2}$-Teilchen in einem Magnetfeld wird ein Aufbau aus vier Komponenten verwendet, welcher in~\cref{fig:aufbau} dargestellt ist.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/anleitung_komponenten.png}
+    \caption{Schematischer Aufbau des Versuchs zur Messung der kernmagnetischen Relaxation.\\ \textbf{1:} Magnet, \textbf{2:} PS2 Controller, \textbf{3:} Mainframe, \textbf{4:} Oszilloskop~\cite{praktikum4_atome}}
+    \label{fig:aufbau}
+\end{figure}
+Das zentrale Element ist ein Magnet mit eingebautem Radiofrequenz (RF)-Messkopf, in dem die Probe (Röhrchen mit Mineralöl) platziert wird. Der Magnet erzeugt ein starkes homogenes Magnetfeld, das die Kernspins der Probe ausrichtet. Der RF-Messkopf dient dazu, die Radiofrequenzpulse zu erzeugen und die Resonanzsignale der Kernspins zu detektieren.
+Zur Steuerung des Magnetfeldgradienten sowie der Temperatur\footnote{Die Temperatur des Magneten muss konstant gehalten werden, da sie sonst Auswirkung auf die Feldstärke hat.} des Magneten wird ein PS2 Controller verwendet.\\
+Das Mainframe ist für die Generierung der RF-Pulse verantwortlich. Es ermöglicht die Einstellung verschiedener Parameter wie Pulsdauer, Pulsabstand und Frequenz. Zudem werden die empfangenen Signale vom Mainframe verarbeitet und an das Oszilloskop weitergeleitet, welches zur Visualisierung und Messung der Signale dient.\\
+Zu Beginn des Versuchs war die Verkabelung bereits vorgenommen, sodass nun die Kalibration des RF-Resonanzkreises durchgeführt werden konnte.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/teachspin_pickup.png}
+    \caption{RF Pickup Probe~\cite{teachspin}.}
+    \label{fig:pickup}
+\end{figure}
+Hierzu wurde eine RF Pickup Probe (\cref{fig:pickup}) in den Messkopf des Magneten eingesetzt, und an den Eingang des Oszilloskops angeschlossen. Da hier nur ein einzelner Puls betrachtet wird wurde der B-Puls ausgeschaltet. Am Mainframe wurde die Länge des A-Pulses auf $A_{\mathrm{len}}=\qty{3}{\micro\second}$ und die Periodendauer auf $P=\qty{100}{\milli\second}$ eingestellt und auf dem Oszilloskop das Signal des Pickup-Sensors betrachtet.
+\begin{figure}[ht]
+    \centering
+    \subcaptionbox{Optimiertes Signal der Pickup Probe~\cite{praktikum4_atome}}{\includegraphics[keepaspectratio, width=.45\textwidth]{figs/anleitung_pickup_signal.png}}
+    \subcaptionbox{Gemessenes Signal der Pickup Probe}{\includegraphics[keepaspectratio, width=.49\textwidth]{plots/optimized_signal.pdf}}
+    \caption{Vergleich der optimierten Pickup Signale}
+    \label{fig:kalibration_oszi}
+\end{figure}
+Durch Justage der Tuning-Kondensatoren des Magneten wurde hier ein Signal~\cref{fig:kalibration_oszi} erzeugt, welches zunächst gedämpft ansteigt und schließlich exponenziell abfällt\footnote{Vgl. Lenzsche Regel: \enquote{[D]er induzierte Strom [ist] immer so gerichtet, dass das von ihm hervorgerufene Magnetfeld der Induktionsursache entgegenwirkt.}\cite{spektrum}\\Somit wird die Magnetisierung sowohl beim Anstieg als auch beim Abfall gebremst.}. Dieses Signal entspricht dem optimierten Signal, welches in der Anleitung~\cite{praktikum4_atome} dargestellt ist. Nach erfolgreicher Kalibration konnte die Pickup-Probe entfernt und die Probe mit Mineralöl eingesetzt werden.
