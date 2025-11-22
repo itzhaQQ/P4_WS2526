@@ -9,8 +9,70 @@ Zur Untersuchung des Verhaltens der Spin-$\frac{1}{2}$-Teilchen in einem Magnetf
     \label{fig:aufbau}
 \end{figure}
 Das zentrale Element ist ein Magnet mit eingebautem Radiofrequenz (RF)-Messkopf, in dem die Probe (Röhrchen mit Mineralöl) platziert wird. Der Magnet erzeugt ein starkes homogenes Magnetfeld, das die Kernspins der Probe ausrichtet. Der RF-Messkopf dient dazu, die Radiofrequenzpulse zu erzeugen und die Resonanzsignale der Kernspins zu detektieren.
-Zur Steuerung des Magnetfeldgradienten sowie der Temperatur\footnote{Die Temperatur des Magneten muss konstant gehalten werden, da sie sonst Auswirkung auf die Feldstärke hat.} des Magneten wird ein PS2 Controller verwendet.\\
-Das Mainframe ist für die Generierung der RF-Pulse verantwortlich. Es ermöglicht die Einstellung verschiedener Parameter wie Pulsdauer, Pulsabstand und Frequenz. Zudem werden die empfangenen Signale vom Mainframe verarbeitet und an das Oszilloskop weitergeleitet, welches zur Visualisierung und Messung der Signale dient.\\
+Zur Steuerung des Magnetfeldgradienten sowie der Temperatur\footnote{Die Temperatur des Magneten muss konstant gehalten werden, da sie sonst Auswirkung auf die Feldstärke hat.} des Magneten wird ein \enquote{\textit{Pulsed NMR Spectrometer}} (PS2) Controller verwendet.\\
+Das Mainframe ist für die Generierung der RF-Pulse verantwortlich. Es ermöglicht die Einstellung verschiedener Parameter wie Pulsdauer, Pulsabstand und Frequenz. Zudem werden die empfangenen Signale vom Mainframe verarbeitet und an das Oszilloskop weitergeleitet, welches zur Visualisierung und Messung der Signale dient.
+\vspace{0.2cm}
+
+Für kernmagnetische Relaxation werden Teilchen benötigt, die sowohl einen Drehimpuls $\vec{J}$ als auch ein magnetisches Moment $\vec{\mu}$ besitzen. In diesem Versuch wird Mineralöl verwendet, da es Wasserstoffkerne (Protonen) enthält, die diese Eigenschaften aufweisen. Die Protonen im Mineralöl haben einen Spin von $\frac{1}{2}$ und ein magnetisches Moment $\vec{\mu} = \gamma \vec{J}$ ($\gamma$ beschreibt hier das gyromagnetische Verhältnis), was sie zu idealen Kandidaten für NMR-Messungen macht. Im unpolarisierten Zustand sind die Drehimpulse der Protonen zufällig ausgerichtet. Der Gesamtdrehimpuls ist durch den Spin quantisiert, also $\vec{J} = \hbar \vec{I}$. Das Anlegen eines konstanten  Magnetfeldes, hier entlang der $z$-Achse, führt zu einer Aufspaltung des Spins in zwei mögliche Quantenzustände mit $m_I = \pm \frac{1}{2}$. Allgemein gilt für die Energie der Kernspins im Magnetfeld:
+\begin{equation}
+    E = - \vec{\mu} \cdot \vec{B} = -\mu_z B_0 = - \hbar \gamma I_z B_0
+\end{equation}
+Durch die Aufspaltung der Spins kommt es zu einer Energiedifferenz zwischen den beiden Spin-Zuständen:
+\begin{equation}
+    \Delta E = \hbar \gamma B_0 = \omega_0 \hbar
+\end{equation}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figs/teachspin_E_aufspaltung.png}
+    \caption{Aufspaltung der Kernspin-Energieniveaus durch äußeres Magnetfeld~\cite{teachspin}.}
+    \label{fig:spin_splitting}
+\end{figure}
+Im thermodynamischen Gleichgewicht sind die Kernspins entsprechend der Boltzmann-Verteilung auf die beiden Energieniveaus verteilt. Dabei besetzen mehr Spins den energetisch günstigeren Zustand (Spin parallel zum Magnetfeld $m=+\frac{1}{2}$) als den energetisch ungünstigeren Zustand (Spin antiparallel zum Magnetfeld $m=-\frac{1}{2}$), was zu einer Netto-Magnetisierung in Richtung des äußeren Magnetfeldes führt. Das Verhältnis der Verteilungen bei einem Vielteilchensystem ist hier gegeben durch:
+\begin{equation}
+    \frac{N_2}{N_1} = \exp\left(\-\frac{\Delta E}{k_B T}\right)
+\end{equation}
+und das durch die Probe erzeugte Magnetfeld entlang der $z$-Achse ist proportional zur Magnetisierung $M_z$:
+\begin{equation}
+    M_z = (N_1 - N_2) \mu_z
+\end{equation}
+Durch dieses Magnetfeld wirkt ein Drehmoment auf die Spins der Kerne, welches gegeben ist durch~\cite{teachspin}:
+\begin{equation}
+    \vec{\mu}\times\vec{B} = \frac{\mathrm{d}\vec{J}}{\mathrm{d}t} \Rightarrow \vec{\mu}\times\vec{B} = \frac{1}{\gamma}\frac{\mathrm{d}\vec{\mu}}{\mathrm{d}t}
+\end{equation}
+\vspace{0.2cm}
+
+Wenn man nun ein zusätzliches, zeitlich veränderliches Magnetfeld $\vec{B}_1$ senkrecht zum statischen Magnetfeld $\vec{B}_0$ anlegt, kann man die Kernspins aus ihrer Gleichgewichtslage bringen. Dieses Magnetfeld wird durch einen RF-Puls erzeugt, der eine Frequenz $\omega$ hat, die nahe der Larmorfrequenz $\omega_0$ liegt. Im Resonanzfall ($\omega \approx \omega_0$) können die Spins Energie vom RF-Feld aufnehmen und in den höheren Energiezustand übergehen.\\
+Betrachtet man nun vereinfacht ein rotierendes Bezugssystem, das sich mit der Frequenz $\omega$ des $B_1$-Feldes dreht, so erscheint das statische Magnetfeld $\vec{B}_0$ reduziert um den Term $\frac{\omega}{\gamma}$. Zusätzlich wirkt in diesem rotierenden System das RF-Magnetfeld $\vec{B}_1$ als konstantes Magnetfeld in der $x$-Richtung (\cref{fig:beff}). Somit ergibt sich im rotierenden Bezugssystem ein effektives Magnetfeld:
+\begin{equation}
+    \vec{B}_{\mathrm{eff}} = \left(B_0 - \frac{\omega}{\gamma}\right)\vec{e}_z + B_1 \vec{e}_x
+\end{equation}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figs/teachspin_rotierendes_Koordinatensystem.png}
+    \caption{Effektives Magnetfeld im rotierenden Bezugssystem~\cite{teachspin}.}
+    \label{fig:beff}
+\end{figure}
+
+\noindent Für die zeitliche Änderung der Magnetisierung im rotierenden Bezugssystem ergibt sich somit:
+\begin{equation}
+    \frac{\mathrm{d}\vec{M}}{\mathrm{d}t} = \gamma \vec{M} \times \vec{B}
+    \Rightarrow \left .\frac{\mathrm{d}\vec{M}}{\mathrm{d}t}\right|_{\mathrm{rot}} = \gamma \vec{M} \times \vec{B}_{\mathrm{eff}}
+\end{equation}
+und die Magnetisierung präzediert um das effektive Magnetfeld.\\
+Wenn für die Frequenz des RF-Feldes die Resonanzbedingung $\omega = \omega_0$ erfüllt ist, vereinfacht sich das effektive Magnetfeld zu $\vec{B}_{\mathrm{eff}} = B_1 \vec{e}_x$. In diesem Fall präzediert die Magnetisierung um die $xy$-Ebene mit der Winkelgeschwindigkeit $\Omega = \gamma B_1$ (\cref{fig:m_rot}).
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figs/teachspin_magn_wgleichw0.png}
+    \caption{Verhalten der Magnetisierung im rotierenden Bezugssystem bei Resonanz~\cite{teachspin}.}
+    \label{fig:m_rot}
+\end{figure}
+Wählt man die Länge des RF-Pulses so, dass die Magnetisierung in der $xy$-Ebene liegt, so spricht man von einem $\frac{\pi}{2}$-Puls. Ein solcher Puls bringt die Magnetisierung vollständig in die $xy$-Ebene, wodurch die Magnetisierung in der $z$-Richtung verschwindet. Ein $\pi$-Puls rotiert die Magnetisierung um $\qty{180}{\degree}$ und kehrt somit ihre Richtung in $-M_z$ um.\\
+Da es jedoch während des RF-Pulses nicht möglich ist die Magnetisierung zu beobachten, wird nach dem RF-Puls die kernmagnetische Relaxation untersucht, wobei man hier zwischen longitudinaler und transversaler Relaxation unterscheidet~\cite{teachspin}.
+%------
+\section{Kalibrierung des Aufbaus}
+%------
+\subsection{Tuning des RF-Resonanzkreises}
+%------
 Zu Beginn des Versuchs war die Verkabelung bereits vorgenommen, sodass nun die Kalibration des RF-Resonanzkreises durchgeführt werden konnte.
 \begin{figure}[ht]
     \centering
@@ -26,4 +88,31 @@ Hierzu wurde eine RF Pickup Probe (\cref{fig:pickup}) in den Messkopf des Magnet
     \caption{Vergleich der optimierten Pickup Signale}
     \label{fig:kalibration_oszi}
 \end{figure}
-Durch Justage der Tuning-Kondensatoren des Magneten wurde hier ein Signal~\cref{fig:kalibration_oszi} erzeugt, welches zunächst gedämpft ansteigt und schließlich exponenziell abfällt\footnote{Vgl. Lenzsche Regel: \enquote{[D]er induzierte Strom [ist] immer so gerichtet, dass das von ihm hervorgerufene Magnetfeld der Induktionsursache entgegenwirkt.}\cite{spektrum}\\Somit wird die Magnetisierung sowohl beim Anstieg als auch beim Abfall gebremst.}. Dieses Signal entspricht dem optimierten Signal, welches in der Anleitung~\cite{praktikum4_atome} dargestellt ist. Nach erfolgreicher Kalibration konnte die Pickup-Probe entfernt und die Probe mit Mineralöl eingesetzt werden.
+Durch Justage der Tuning-Kondensatoren des Magneten wurde hier ein Signal (\cref{fig:kalibration_oszi}b) erzeugt, welches zunächst gedämpft ansteigt und schließlich exponenziell abfällt\footnote{Vgl. Lenzsche Regel: \enquote{[D]er induzierte Strom [ist] immer so gerichtet, dass das von ihm hervorgerufene Magnetfeld der Induktionsursache entgegenwirkt.}\cite{spektrum}\\Somit wird die Magnetisierung sowohl beim Anstieg als auch beim Abfall gebremst.}. Dieses Signal entspricht dem optimierten Signal, welches in der Anleitung (\cref{fig:kalibration_oszi}a) dargestellt ist. Nach erfolgreicher Kalibration konnte die Pickup-Probe entfernt und die Probe mit Mineralöl eingesetzt werden.
+%------
+\subsection{Optimierung des Free Induction Decay Signals}
+%------
+Nun wird die Pickup Probe entfernt und die Probe mit Mineralöl eingesetzt, um das FID-Signal (Free Induction Decay) zu betrachten, welches nach einem einzelnen A-Puls als \enquote{Antwort der Probe}~\cite{praktikum4_atome} auftritt. Zunächst werden die vier Potentiometer am PS2 Controller ($X,Y,Z,Z^2$) auf Null eingestellt. Man erwartet nun ein Signal, welches einem exponentiellen Abfall ähnelt, da die Magnetisierung in der $xy$-Ebene nach dem $\frac{\pi}{2}$-Puls aufgrund der transversalen Relaxation mit der Zeit abfällt. Durch Justage der Potentiometer und der Frequenz am Synthesizer wird versucht, dieses Signal zu optimieren. Ein optimiertes FID-Signal ist in~\cref{fig:fid_signal} dargestellt. Hierbei ist eine Zerfallszeit von etwas über $\qty{4}{\milli\second}$ zu erkennen, welche durch den eingezeichneten \enquote{1/e Abfall} markiert ist.\\
+Nach erfolgreicher Kalibration wurde eine Resonanzfrequenz von $f = \qty{21.16419}{\mega\hertz}$ bestimmt.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/FID.pdf}
+    \caption{Gemessenes FID-Signal nach einem $\frac{\pi}{2}$-Puls. Zu erkennen ist eine Zerfallszeit von etwas über $\qty{4}{\milli\second}$ (eingezeichnet durch \enquote{1/e Abfall})}
+    \label{fig:fid_signal}
+\end{figure}
+%------
+\subsection{$\frac{\pi}{2}$- und $\pi$-Puls Justage}
+%------
+%chktex-file 35
+Da ein $\frac{\pi}{2}$-Puls die Magnetisierung vollständig in die $xy$-Ebene rotiert, ist die Amplitude des FID-Signals nach einem solchen Puls maximal. Ein $\pi$-Puls hingegen kehrt die Magnetisierung in $-M_z$ um, wodurch kein FID-Signal entsteht. Durch Variation der Pulsdauer $A_{\mathrm{len}}$ des A-Pulses am Mainframe kann somit die Dauer für einen $\frac{\pi}{2}$- und $\pi$-Puls bestimmt werden, wobei die Amplituden ($U_{\mathrm{max}}(\pi):U_{\mathrm{max}}(\pi/2)$) der Signale ein Verhältnis von mindestens $1:6$ aufweisen sollten~\cite{praktikum4_atome}. Hierfür wird die Pulslänge solange variiert, bis das Signal in etwa verschwindet.\\
+Nach diesem Schritt hatte der $\pi$-Puls eine Amplitude und Länge von:
+\begin{align*}
+    U_{\mathrm{max}}(\pi) &= \qty{150\pm10}{\milli\volt} \\
+    A_{\mathrm{len}}(\pi) &= \qty{6.36\pm0.01}{\micro\second}
+\end{align*}
+und der $\frac{\pi}{2}$-Puls von:
+\begin{align*}
+    U_{\mathrm{max}}(\pi/2) &= \qty{1\pm0.1}{\volt} \\
+    A_{\mathrm{len}}(\pi/2) &= \qty{3.18\pm0.01}{\micro\second}
+\end{align*}
+was einem Verhältnis von $1:6.7$ entspricht. Diese Werte werden für die weiteren Messungen verwendet.\\
