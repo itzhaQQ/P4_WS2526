@@ -1,1 +1,74 @@
 \chapter{Longitudinale Relaxationszeit}
+% chktex-file 1
+% chktex-file 24
+Unter longitudinaler Relaxation (auch Spin-Gitter-Relaxation genannt) versteht man das zurückkehren der Magnetisierungskomponente $M_z$ in Richtung des äußeren Magnetfeldes $B_0$ nach einer Anregung durch einen RF-Puls. Diese Relaxation wird durch Wechselwirkungen zwischen den Kernspins und ihrer Umgebung (Gitter) verursacht und wird durch die longitudinale Relaxationszeit $T_1$ beschrieben.~\cite{teachspin} Die Rückkehr der Magnetisierung in den Gleichgewichtszustand erfolgt jedoch nicht instantan, sondern exponentiell (\cref{fig:long_relax}):
+\begin{equation}
+    M_z(t) = M_0 \left(1 - e^{-\frac{t}{T_1}}\right)\label{equ:long_relax}
+\end{equation}
+Im folgenden wird die Messung und Auswertung der longitudinalen Relaxationszeit $T_1$ mit der \textit{Sättigungs-Zurückgewinn-} und der \textit{Polarisations-Zurückgewinn-Methode} beschrieben und durchgeführt.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figs/teachspin_long_relax.png}
+    \caption{Darstellung der longitudinalen Relaxation nach einem $\frac{\pi}{2}$-Puls. Nach dem Puls liegt die Magnetisierung in der $xy$-Ebene und kehrt mit der Zeit exponentiell in Richtung $z$-Achse zurück.\cite{teachspin}}
+    \label{fig:long_relax}
+\end{figure}
+%--------
+\section{Sättigungs-Zurückgewinn}
+%--------
+Diese Methode verwendet einen initialen $\pi/2$-Puls, um die Magnetisierung vollständig in die $xy$-Ebene zu kippen, wodurch die longitudinale Magnetisierung $M_z$ auf null gesetzt wird. Anschließend wird die Magnetisierung für eine variable Wartezeit $\tau$ wiederhergestellt, bevor ein weiterer $\frac{\pi}{2}$-Puls angewendet wird, um die Magnetisierung in negative $z$-Richtung zu kippen.~\cite{praktikum4_atome}
+\begin{equation*}
+    \pi/2 \rightarrow \mathrm{FID} \rightarrow \tau \rightarrow \pi/2 \rightarrow \mathrm{FID}
+\end{equation*}
+Gemessen wird also die Zeit, die die Magnetisierung benötigt, um wieder sich wieder der $xy$-Ebene anzunähern. Die Messwerte sind in \cref{tab:saettigung} aufgeführt.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/saettigung.pdf}
+    \caption{Messdaten und Anpassung der Sättigungs-Zurückgewinn-Methode zur Bestimmung der longitudinalen Relaxationszeit $T_1$. Aufgetragen ist das Antwortsignal bei variabler Wartezeit $\tau$.}
+    \label{fig:long_saettigung}
+\end{figure}
+Wichtig ist hierbei, dass die Zeit $P$ zwischen zwei aufeinanderfolgenden Messungen deutlich größer als $T_1$ gewählt wird, um eine vollständige Relaxation der Magnetisierung zu gewährleisten. Diese wurde hier auf $P=\qty{1}{\second}$ am Mainframe eingestellt.~\cite{praktikum4_atome}\\
+An die Messwerte wird ein Modell gemäß \cref{equ:long_relax} angepasst. Die resultierenden Anpassungsparameter ergeben sich zu:
+\begin{itemize}
+    \item $M_0 = \qty{1115.2 \pm 7.1}{\milli\volt}$
+    \item $T_1 = \qty{47.9 \pm 1.2}{\milli\second}$
+    \item $\chi_{\mathrm{red}}^2 = 1.43$
+\end{itemize}
+Die Anpassung ist in \cref{fig:long_saettigung} dargestellt.
+Der Wert für $\chi_{\mathrm{red}}^2$ liegt nahe bei 1, was auf eine gute Anpassung des Modells an die Messdaten hinweist.
+%--------
+\section{Polarisations-Zurückgewinn}
+%--------
+Bei dieser Methode wird die Magnetisierung zunächst mit einem $\pi$-Puls in negative $z$-Richtung gekippt. Anschließend wird die Magnetisierung für eine variable Wartezeit $\tau$ wiederhergestellt, bevor ein weiterer $\frac{\pi}{2}$-Puls angewendet wird, um die Magnetisierung in die $xy$-Ebene zu kippen.~\cite{praktikum4_atome}
+\begin{equation*}
+    \pi \rightarrow \tau \rightarrow \pi/2 \rightarrow \mathrm{FID}
+\end{equation*}
+Gemessen wird also die Zeit, die die Magnetisierung benötigt, um sich wieder in die negative $xy$-Ebene zu bewegen. Die Messwerte sind in \cref{tab:polarisation} aufgeführt. Man sieht hier, wie für kleine $\tau$ negative Amplituden gemessen\footnote{Im Versuch werden positive Amplituden gemessen, die bis zu einem bestimmten $\tau$ abnehmen und danach wieder zunehmen. Der Effekt wurde korrigiert, indem den entsprechenden anfänglichen Amplituden ein negatives Vorzeichen gegeben wurde (das Envelope-Signal gibt nur Werte $U = \sqrt{I^2+Q^2} > 0$ wieder).} werden, da die Magnetisierung noch in negativer $z$-Richtung liegt.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/polarisation.pdf}
+    \caption{Messdaten und Anpassung der Polarisations-Zurückgewinn-Methode zur Bestimmung der longitudinalen Relaxationszeit $T_1$. Aufgetragen ist das Antwortsignal bei variabler Wartezeit $\tau$.}
+    \label{fig:long_polarisation}
+\end{figure}
+An die Messwerte wird ein Modell gemäß 
+\begin{equation}
+    M_z(t) = M_0 \left(1 - 2e^{-\frac{t}{T_1}}\right)\label{equ:long_polarisation2}
+\end{equation}
+angepasst, wobei hier zu beachten ist, dass die Magnetisierung von $-M_0$ startet. Die resultierenden Anpassungsparameter ergeben sich zu:
+\begin{itemize}
+    \item $M_0 = \qty{1071.8 \pm 14.2}{\milli\volt}$
+    \item $T_1 = \qty{50.9 \pm 1.2}{\milli\second}$
+    \item $\chi_{\mathrm{red}}^2 = 0.67$
+\end{itemize}
+Die Anpassung ist in \cref{fig:long_polarisation} dargestellt.
+Der Wert für $\chi_{\mathrm{red}}^2$ liegt nahe bei 1, was auf eine gute Anpassung des Modells an die Messdaten hinweist.
+\vspace{0.2cm}
+
+Vergleicht man nun die beiden Methoden zur Bestimmung von $T_1$, so ergeben sich die Werte:
+\begin{itemize}
+    \item Sättigungs-Zurückgewinn: $T_1 = \qty{47.9 \pm 1.2}{\milli\second}$
+    \item Polarisations-Zurückgewinn: $T_1 = \qty{50.9 \pm 1.2}{\milli\second}$
+\end{itemize}
+Die Differenz der beiden Werte entspricht etwa $1.8\sigma$ und ist damit im Rahmen der Unsicherheiten. Auch $\chi_{\mathrm{red}}^2$ liegt für beide Methoden nahe bei 1, was auf eine gute Anpassung des Modells an die Messdaten hinweist. Der Mittelwert der beiden Messungen ergibt sich zu:
+\begin{equation*}
+    T_1 = \qty{49.4 \pm 0.9}{\milli\second}
+\end{equation*}

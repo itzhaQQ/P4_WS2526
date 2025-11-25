@@ -1,7 +1,62 @@
 \chapter{Rabi-Oszillation}
-
-\section{Section}
-% -----
-\subsection{Subsection}
-
-\subsubsection{Subsubsection}
+% chktex-file 1
+% chktex-file 24
+% chktex-file 35
+Im rotierenden Bezugssystem ist das effektive Feld bei Resonanz ($\omega = \omega_0$)
+\begin{equation}
+    \vec{B}_{\mathrm{eff}} = B_1 x
+\end{equation}
+gerichtet entlang der $x$-Achse (das konstante $B_0$ entlang der $z$-Achse fällt im rotierenden Bezugssystem weg). Die Magnetisierung präzediert nun um dieses Feld mit der Winkelgeschwindigkeit
+\begin{equation}
+    \Omega_R = \gamma B_1.
+\end{equation}
+wobei $\Omega_R$ die Rabi-Frequenz ist.
+Sie bestimmt, wie schnell die Magnetisierung durch einen RF-Puls um die $x$-Achse gekippt wird (siehe \cref{fig:m_rot}).:
+\begin{equation}
+    \theta = \Omega_R t_{\mathrm{puls}} \Rightarrow
+ \left\{\begin{matrix}
+ t_{\pi / 2} = \frac{\pi}{2\Omega_R} \\
+t_{\pi} = \frac{\pi}{\Omega_R}
+\end{matrix}\right. \label{equ:pulslaenge}
+\end{equation}
+wobei $t_{\mathrm{puls}}$ die Pulsdauer ist.
+%--------
+\section{Durchführung}
+%--------
+Zur Bestimmung der Rabi-Frequenz wird die Pulsdauer $t_{\mathrm{puls}}$ variiert und die Amplitude des \textit{Envelope} und \textit{In-Phase} Signals gemessen. Dabei wird die Resonanzfrequenz $f = \qty{21.16419}{\mega\hertz}$ eingestellt. Nun werden die FID-Amplituden in Abhängigkeit der Pulsdauer ($\SIrange{0.5}{12}{\micro\second}$) aufgenommen~(\cref{tab:rabi_raw}). Aus Seiten der Theorie ist zu erwarten, dass die Stärke der Magnetisierung periodisch mit der Pulsdauer ansteigt und abfällt, da das magnetische Moment auf der Blochkugel (Abb.~\ref{fig:spinecho_bloch} a und b) proportional zur Länge des Pulses gekippt wird. Misst man nun die Amplitude der Magnetisierung in $xy$-Ebene (In-Phase Signal), so sollte diese eine Sinusfunktion in Abhängigkeit der Pulsdauer ergeben:
+\begin{equation}
+    U_{I,\mathrm{max}} = U_{I,0} \cdot \sin(\Omega_{R,I} A_{\mathrm{len}})
+\end{equation}
+Die $xy$-Komponente ist die Projektion des Betrages des magnetischen Momentes und folgt daher der Beziehung:
+\begin{equation}
+    U_{\mathrm{env, max}} = U_{\mathrm{env,0}} \cdot |\sin(\Omega_{R,\mathrm{env}} A_{\mathrm{len}})|
+\end{equation}
+Diese Beziehungen sind auch in den Messdaten (\cref{fig:rabi_plot}) zu erkennen.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/Rabi.pdf}
+    \caption{Rabi-Oszillation bei Resonanzfrequenz $f = \qty{21.16419}{\mega\hertz}$}
+    \label{fig:rabi_plot}
+\end{figure}
+Durch die Anpassung der Messdaten mit den oben genannten Funktionen ergeben die Anpassungsparameter:
+\begin{itemize}
+    \item Für das In-Phase Signal:
+    \begin{itemize}
+        \item $U_{I,0} = \qty{116.9 \pm 2.4}{\milli\volt}$
+        \item $\Omega_{R,I} = \qty{489.9 \pm 0.3}{\kilo\hertz}$
+        \item $\chi_{\mathrm{red}}^2 = 1.39$
+    \end{itemize}
+    \item Für das Envelope Signal:
+    \begin{itemize}
+        \item $U_{\mathrm{env,0}} = \qty{879.5 \pm 36.0}{\milli\volt}$
+        \item $\Omega_{R,\mathrm{env}} = \qty{492.9 \pm 2.4}{\kilo\hertz}$
+        \item $\chi_{\mathrm{red}}^2 = 1.30$
+    \end{itemize}
+\end{itemize}
+Die Güte der Anpassungen liegen in einem guten Bereich. Die Rabi-Frequenzen der beiden Signale stimmen innerhalb der Unsicherheiten überein. Der statistische Mittelwert ergibt sich zu $\Omega_R = \qty{491.4 \pm 1.2}{\kilo\hertz}$.\\
+Nun kann die Dauer für einen $\frac{\pi}{2}$-Puls und einen $\pi$-Puls gemäß \cref{equ:pulslaenge} bestimmt werden zu:
+\begin{align*}
+    t_{\pi / 2} &= \qty{3.196 \pm 0.003}{\micro\second} \\
+    t_{\pi} &= \qty{6.39 \pm 0.005}{\micro\second}
+\end{align*}
+Vergleicht man diese Werte mit den in Abschnitt~\ref{sec:aufbau_puls} bestimmten Pulsdauern, so sind diese um $\qty{0.02}{\micro\second}$ bzw. $\qty{0.03}{\micro\second}$ größer. So weichen sie um $5\sigma$ bzw. $6\sigma$ voneinander ab

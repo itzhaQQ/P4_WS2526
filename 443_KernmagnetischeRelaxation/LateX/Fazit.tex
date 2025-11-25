@@ -1,1 +1,39 @@
 \chapter{Fazit}
+
+Abschließend lässt sich sagen, dass der Versuch zur kernmagnetischen Relaxation insgesamt erfolgreich durchgeführt wurde und die wesentlichen theoretischen Zusammenhänge experimentell bestätigt werden konnten. Bereits im ersten Versuchsteil zeigten die aufgenommenen Rabi-Oszillationen das erwartete Verhalten: Sowohl die Variation der Pulsdauer zu klaren Oszillationen der Antwortamplitude. Zwar wichen die aus den Fits bestimmten Pulszeiten leicht von den zuvor justierten Werten ab, jedoch lagen diese Abweichungen im Bereich von $<\qty{0.03}{\micro\second}$ und können auf systematische Unsicherheiten bei der Pulssteuerung oder zu klein gewählte Fehler zurückgeführt werden.
+\begin{itemize}
+    \item Puls-Justage:
+    \[t_{\pi/2} = \qty{3.18 \pm 0.02}{\micro\second},\quad t_{\pi} = \qty{6.36 \pm 0.04}{\micro\second}\]
+    \item Rabi-Oszillationen:
+    \[t_{\pi/2} = \qty{3.196 \pm 0.003}{\micro\second},\quad t_{\pi} = \qty{6.39 \pm 0.005}{\micro\second}\]
+\end{itemize}
+\vspace{0.2cm}
+
+Bei der Bestimmung der longitudinalen Relaxationszeit $T_1$ ergaben die beiden angewendeten Methoden unterschiedliche Ergebnisse.
+\begin{itemize}
+    \item Sättigungs-Zurückgewinnung:
+    \[T_1 = \qty{47.9 \pm 1.2}{\milli\second}\]
+    \item Polarisations-Zurückgewinnung:
+    \[T_1 = \qty{50.9 \pm 1.2}{\milli\second}\]
+    %\item Mittelwert:
+    %\[T_1 = \qty{49.4 \pm 0.9}{\milli\second}\]
+\end{itemize}
+Beide Methoden liefern gute Fits und klare exponentielle Anstiege der Magnetisierung. Die Differenz der beiden Werte kann auf systematische Fehler bei der Pulsauswahl oder die unterschiedliche Empfindlichkeit der Methoden gegenüber Störeinflüssen zurückgeführt werden. Das statistische Mittel der Werte beträgt hier $T_1 = \qty{49.4 \pm 0.9}{\milli\second}$.
+\vspace{0.2cm}
+
+Das FID-Signal ermöglichte anschließend die Bestimmung der effektiven transversalen Relaxationszeit $T_2^\ast$, die mit
+\[
+T_2^\ast = \qty{4.4 \pm 0.05}{\milli\second}
+\]
+im erwarteten Bereich liegt. Der exponentielle Abfall des FID war klar erkennbar, was auf eine gute Optimierung von Frequenz und Magnetfeldgradienten hindeutet.
+\vspace{0.2cm}
+
+Für die homogene transversale Relaxationszeit $T_2$ ergaben die drei untersuchten Methoden (Hahn–Echo, Carr–Purcell und Meiboom–Gill) teils deutlich unterschiedliche Werte. Während die Hahn-Spinecho-Sequenz einen vergleichsweise kleinen Wert ergibt, liefern die Sequenzen mit mehrfachen Pulsen größere und stabilere Ergebnisse:
+\[
+T_{2,\mathrm{Hahn}} = \qty{39.7 \pm 2.6}{\milli\second},\quad
+T_{2,\mathrm{CP}} = \qty{55.9 \pm 1.0}{\milli\second},\quad
+T_{2,\mathrm{MG}} = \qty{63.4 \pm 1.3}{\milli\second}.
+\]
+Die Unterschiede lassen sich darauf zurückführen, dass systematische Fehler im $\pi$-Puls bei Carr-Purcell akkumulieren, während die Meiboom-Gill-Sequenz diese kompensiert und daher das physikalisch plausibelste Ergebnis liefert. Im Idealfall ähneln sich die Werte der beiden Sequenzen (wie sie es hier tun). Da sich die Werte der beiden Sequenzen jedoch stark vom ermittelten Wert des Hahn-Spinechos unterscheiden wird davon aufgegangen, dass bei der Durchführung der Messungen ein Fehler unterlaufen ist.  Die Modelle der beiden Mehrfach-Echo-Sequenzen waren insgesamt akzeptabel, und der exponentielle Abfall war klar sichtbar.
+
+Aus den Werten von $T_2$ und $T_2^\ast$ konnte schließlich die inhomogene transversale Relaxationszeit bestimmt werden, die im Bereich von $4.7$-$4.9\,\mathrm{ms}$ lag. Dies bestätigt den starken Einfluss der Magnetfeldinhomogenität trotz der vorgenommenen Optimierung mittels der Gradientenspulen.

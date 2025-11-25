@@ -8,12 +8,12 @@ Zur Untersuchung des Verhaltens der Spin-$\frac{1}{2}$-Teilchen in einem Magnetf
     \caption{Schematischer Aufbau des Versuchs zur Messung der kernmagnetischen Relaxation.\\ \textbf{1:} Magnet, \textbf{2:} PS2 Controller, \textbf{3:} Mainframe, \textbf{4:} Oszilloskop~\cite{praktikum4_atome}}
     \label{fig:aufbau}
 \end{figure}
-Das zentrale Element ist ein Magnet mit eingebautem Radiofrequenz (RF)-Messkopf, in dem die Probe (Röhrchen mit Mineralöl) platziert wird. Der Magnet erzeugt ein starkes homogenes Magnetfeld, das die Kernspins der Probe ausrichtet. Der RF-Messkopf dient dazu, die Radiofrequenzpulse zu erzeugen und die Resonanzsignale der Kernspins zu detektieren.
+Das zentrale Element ist ein Magnet mit eingebautem Radiofrequenz (RF)-Messkopf, in dem die Probe (Röhrchen mit Mineralöl) platziert wird. Der Magnet erzeugt ein konstantes homogenes Magnetfeld, das die Kernspins der Probe ausrichtet. Der RF-Messkopf dient dazu, die Radiofrequenzpulse zu erzeugen und die Resonanzsignale der Kernspins zu detektieren.
 Zur Steuerung des Magnetfeldgradienten sowie der Temperatur\footnote{Die Temperatur des Magneten muss konstant gehalten werden, da sie sonst Auswirkung auf die Feldstärke hat.} des Magneten wird ein \enquote{\textit{Pulsed NMR Spectrometer}} (PS2) Controller verwendet.\\
 Das Mainframe ist für die Generierung der RF-Pulse verantwortlich. Es ermöglicht die Einstellung verschiedener Parameter wie Pulsdauer, Pulsabstand und Frequenz. Zudem werden die empfangenen Signale vom Mainframe verarbeitet und an das Oszilloskop weitergeleitet, welches zur Visualisierung und Messung der Signale dient.
 \vspace{0.2cm}
 
-Für kernmagnetische Relaxation werden Teilchen benötigt, die sowohl einen Drehimpuls $\vec{J}$ als auch ein magnetisches Moment $\vec{\mu}$ besitzen. In diesem Versuch wird Mineralöl verwendet, da es Wasserstoffkerne (Protonen) enthält, die diese Eigenschaften aufweisen. Die Protonen im Mineralöl haben einen Spin von $\frac{1}{2}$ und ein magnetisches Moment $\vec{\mu} = \gamma \vec{J}$ ($\gamma$ beschreibt hier das gyromagnetische Verhältnis), was sie zu idealen Kandidaten für NMR-Messungen macht. Im unpolarisierten Zustand sind die Drehimpulse der Protonen zufällig ausgerichtet. Der Gesamtdrehimpuls ist durch den Spin quantisiert, also $\vec{J} = \hbar \vec{I}$. Das Anlegen eines konstanten  Magnetfeldes, hier entlang der $z$-Achse, führt zu einer Aufspaltung des Spins in zwei mögliche Quantenzustände mit $m_I = \pm \frac{1}{2}$. Allgemein gilt für die Energie der Kernspins im Magnetfeld:
+Für kernmagnetische Relaxation werden Teilchen benötigt, die sowohl einen Gesamtdrehimpuls $\vec{J}$ als auch ein magnetisches Moment $\vec{\mu}$ besitzen. In diesem Versuch wird Mineralöl verwendet, da es Wasserstoffkerne (Protonen) enthält, die diese Eigenschaften aufweisen. Die Protonen im Mineralöl haben einen Spin von $\frac{1}{2}$ und ein magnetisches Moment $\vec{\mu} = \gamma \vec{J}$ ($\gamma$ beschreibt hier das gyromagnetische Verhältnis), was sie zu idealen Kandidaten für NMR-Messungen macht. Im unpolarisierten Zustand sind die Drehimpulse der Protonen zufällig ausgerichtet. Der Gesamtdrehimpuls ist durch den Spin $\vec{I}$ quantisiert, also $\vec{J} = \hbar \vec{I}$. Das Anlegen eines konstanten  Magnetfeldes, hier entlang der $z$-Achse, führt zu einer Aufspaltung des Spins in zwei mögliche Quantenzustände mit $m_I = \pm \frac{1}{2}$. Allgemein gilt für die Energie der Kernspins im Magnetfeld:
 \begin{equation}
     E = - \vec{\mu} \cdot \vec{B} = -\mu_z B_0 = - \hbar \gamma I_z B_0
 \end{equation}
@@ -80,7 +80,7 @@ Zu Beginn des Versuchs war die Verkabelung bereits vorgenommen, sodass nun die K
     \caption{RF Pickup Probe~\cite{teachspin}.}
     \label{fig:pickup}
 \end{figure}
-Hierzu wurde eine RF Pickup Probe (\cref{fig:pickup}) in den Messkopf des Magneten eingesetzt, und an den Eingang des Oszilloskops angeschlossen. Da hier nur ein einzelner Puls betrachtet wird wurde der B-Puls ausgeschaltet. Am Mainframe wurde die Länge des A-Pulses auf $A_{\mathrm{len}}=\qty{3}{\micro\second}$ und die Periodendauer auf $P=\qty{100}{\milli\second}$ eingestellt und auf dem Oszilloskop das Signal des Pickup-Sensors betrachtet.
+Hierzu wurde eine RF Pickup Probe (\cref{fig:pickup}) in den Messkopf des Magneten eingesetzt, und an den Eingang des Oszilloskops angeschlossen. Da hier nur ein einzelner Puls betrachtet wird wurde der Puls B am Mainframe ausgeschaltet und die Länge des A-Pulses auf $A_{\mathrm{len}}=\qty{3}{\micro\second}$ und die Periodendauer auf $P=\qty{100}{\milli\second}$ eingestellt und auf dem Oszilloskop das Signal des Pickup-Sensors betrachtet.
 \begin{figure}[ht]
     \centering
     \subcaptionbox{Optimiertes Signal der Pickup Probe~\cite{praktikum4_atome}}{\includegraphics[keepaspectratio, width=.45\textwidth]{figs/anleitung_pickup_signal.png}}
@@ -92,7 +92,15 @@ Durch Justage der Tuning-Kondensatoren des Magneten wurde hier ein Signal (\cref
 %------
 \subsection{Optimierung des Free Induction Decay Signals}
 %------
-Nun wird die Pickup Probe entfernt und die Probe mit Mineralöl eingesetzt, um das FID-Signal (Free Induction Decay) zu betrachten, welches nach einem einzelnen A-Puls als \enquote{Antwort der Probe}~\cite{praktikum4_atome} auftritt. Zunächst werden die vier Potentiometer am PS2 Controller ($X,Y,Z,Z^2$) auf Null eingestellt. Man erwartet nun ein Signal, welches einem exponentiellen Abfall ähnelt, da die Magnetisierung in der $xy$-Ebene nach dem $\frac{\pi}{2}$-Puls aufgrund der transversalen Relaxation mit der Zeit abfällt. Durch Justage der Potentiometer und der Frequenz am Synthesizer wird versucht, dieses Signal zu optimieren. Ein optimiertes FID-Signal ist in~\cref{fig:fid_signal} dargestellt. Hierbei ist eine Zerfallszeit von etwas über $\qty{4}{\milli\second}$ zu erkennen, welche durch den eingezeichneten \enquote{1/e Abfall} markiert ist.\\
+Nun wird die Pickup Probe entfernt und die Probe mit Mineralöl eingesetzt, um das FID-Signal (Free Induction Decay) zu betrachten, welches nach einem einzelnen A-Puls als \enquote{Antwort der Probe}~\cite{praktikum4_atome} auftritt. Zunächst werden die vier Potentiometer am PS2 Controller ($X,Y,Z,Z^2$) auf Null eingestellt. Man erwartet nun ein Signal, welches einem exponentiellen Abfall ähnelt, da die Magnetisierung in der $xy$-Ebene nach dem $\frac{\pi}{2}$-Puls aufgrund der transversalen Relaxation mit der Zeit abfällt.
+Die Dynamik lässt sich anschaulich auf der \textit{Bloch-Kugel} (\cref{fig:spinecho_bloch} a bis c) beschreiben. Nach dem $\frac{\pi}{2}$-Puls liegt die Magnetisierung in der $xy$-Ebene und präzediert um das statische Magnetfeld $B_0$. Aufgrund von Inhomogenitäten im Magnetfeld dephasieren die einzelnen Spins jedoch mit der Zeit, was zu einem Abfall der Gesamtmagnetisierung in der $xy$-Ebene führt.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figs/teachspin_spinecho_bloch.png}
+    \caption{Blochkugel im rotierenden Bezugssystem.\\ \textbf{a} Grundzustand der Magnetisierung entlang $z$.\\ \textbf{b} Nach einem $\pi/2$-Puls liegt die Magnetisierung in der $xy$-Ebene.\\ \textbf{c} Die Magnetisierungen dephasieren in unterschiedliche Richtungen über einen Zeitraum $\tau$\\ \textbf{d} Nach einem $\pi$-Puls drehen sich die Magnetisierungen um und präzedieren weiter.\\ \textbf{e} Nach weiterer Zeit $\tau$ haben sich die Magnetisierungen wieder in Phase und es entsteht ein Spin-Echo.\cite{teachspin}}
+    \label{fig:spinecho_bloch}
+\end{figure} 
+Durch Justage der Potentiometer und der Frequenz am Synthesizer wird versucht, dieses Signal zu optimieren. Ein optimiertes FID-Signal ist in~\cref{fig:fid_signal} dargestellt. Hierbei ist eine Zerfallszeit von etwas über $\qty{4}{\milli\second}$ zu erkennen, welche durch den eingezeichneten \enquote{1/e Abfall} markiert ist.\\
 Nach erfolgreicher Kalibration wurde eine Resonanzfrequenz von $f = \qty{21.16419}{\mega\hertz}$ bestimmt.
 \begin{figure}[ht]
     \centering
@@ -101,7 +109,7 @@ Nach erfolgreicher Kalibration wurde eine Resonanzfrequenz von $f = \qty{21.1641
     \label{fig:fid_signal}
 \end{figure}
 %------
-\subsection{$\frac{\pi}{2}$- und $\pi$-Puls Justage}
+\subsection{$\frac{\pi}{2}$- und $\pi$-Puls Justage}\label{sec:aufbau_puls}
 %------
 %chktex-file 35
 Da ein $\frac{\pi}{2}$-Puls die Magnetisierung vollständig in die $xy$-Ebene rotiert, ist die Amplitude des FID-Signals nach einem solchen Puls maximal. Ein $\pi$-Puls hingegen kehrt die Magnetisierung in $-M_z$ um, wodurch kein FID-Signal entsteht. Durch Variation der Pulsdauer $A_{\mathrm{len}}$ des A-Pulses am Mainframe kann somit die Dauer für einen $\frac{\pi}{2}$- und $\pi$-Puls bestimmt werden, wobei die Amplituden ($U_{\mathrm{max}}(\pi):U_{\mathrm{max}}(\pi/2)$) der Signale ein Verhältnis von mindestens $1:6$ aufweisen sollten~\cite{praktikum4_atome}. Hierfür wird die Pulslänge solange variiert, bis das Signal in etwa verschwindet.\\

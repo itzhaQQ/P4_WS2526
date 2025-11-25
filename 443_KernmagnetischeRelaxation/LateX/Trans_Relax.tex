@@ -1,1 +1,136 @@
 \chapter{Transversale Relaxationszeit}
+% chktex-file 1
+% chktex-file 24
+Die transversale Relaxation (auch Spin-Spin-Relaxation genannt) beschreibt den Prozess, bei dem die Magnetisierungskomponente $M_{xy}$ in der Ebene senkrecht zum äußeren Magnetfeld $B_0$ abklingt. Diese Relaxation wird durch Wechselwirkungen zwischen den Kernspins selbst verursacht und wird durch die transversale Relaxationszeit $T_2$ charakterisiert.~\cite{teachspin} Die Abnahme der Magnetisierung in der $xy$-Ebene erfolgt exponentiell (\cref{fig:trans_relax}). 
+\begin{equation}
+    M_{xy}(t) = M_{xy,0} \cdot e^{-\frac{t}{T_2}}\label{equ:trans_relax}
+\end{equation}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figs/teachspin_trans_relax.png}
+    \caption{Darstellung der transversalen Relaxation. Die Magnetisierung in der $xy$-Ebene nimmt exponentiell ab.\cite{teachspin}}
+    \label{fig:trans_relax}
+\end{figure}
+Die effektive transversale Relaxationszeit $T_2^*$ setzt sich aus der inhomogenen und der homogenen Relaxationszeit zusammen:
+\begin{equation}
+    \frac{1}{T_2^*} = \frac{1}{T_2} + \frac{1}{T_{2,\mathrm{inh}}} \label{equ:relax}
+\end{equation}
+wobei $T_{2,\mathrm{inh}}$ die Relaxationszeit aufgrund inhomogener Magnetfelder ist.
+Im folgenden wird sowohl die effektive transversale Relaxationszeit $T_2^*$ mittels der FID-Methode als auch die homogene transversale Relaxationszeit $T_2$ mittels der Carr-Purcell- und Meiboom-Gill-Sequenzen bestimmt.
+%--------
+\section{Effektive transversale Relaxationszeit}
+%--------
+Die effektive transversale Relaxationszeit $T_2^*$ wird durch die Analyse des Free Induction Decay (FID)-Signals bestimmt. Nach einem $\frac{\pi}{2}$-Puls präzediert die Magnetisierung in der $xy$-Ebene und nimmt aufgrund von Spin-Spin-Wechselwirkungen und inhomogenen Magnetfeldern exponentiell ab. (siehe \cref{fig:spinecho_bloch} a bis c)~\cite{teachspin}\\
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/eff_Relaxationszeit.pdf}
+    \caption{Messdaten und Anpassung des FID-Signals zur Bestimmung der effektiven transversalen Relaxationszeit $T_2^*$. Aufgetragen ist das Antwortsignal nach einem $\frac{\pi}{2}$-Puls. Zur besseren Übersicht werden die Fehlerbalken nicht dargestellt. Angenommen wurde ein konstanter Fehler von $\Delta U = \qty{0.02}{\volt}$ und $\Delta t = \qty{1}{\percent}$.}
+    \label{fig:eff_relax}
+\end{figure}
+Die Messwerte werden mit einem exponentiellen Abklingmodell gemäß \cref{equ:trans_relax} angepasst\footnote{Aufgrund der Masse der Messwerte werden sie in diesem Protokoll nicht aufgeführt, können jedoch unter folgendem Link eingesehen werden: \href{https://github.com/itzhaQQ/P4_WS2526.git}{github}} (\cref{fig:eff_relax}).\\ 
+\newpage Die resultierenden Anpassungsparameter ergeben sich zu:
+\begin{itemize}
+    \item $M_{xy,0} = \qty{1.18 \pm 0.009}{\volt}$
+    \item $T_2^* = \qty{4.40 \pm 0.05}{\milli\second}$
+    \item $\chi_{\mathrm{red}}^2 = 0.15$
+\end{itemize}
+Der Wert für $\chi_{\mathrm{red}}^2$ liegt deutlich unter 1, was auf eine Überanpassung des Modells an die Messdaten hinweist. Dies könnte auf eine Überschätzung der Messunsicherheiten zurückzuführen sein.
+%--------
+\section{Homogene transversale Relaxationszeit}
+%--------
+Die homogene transversale Relaxationszeit $T_2$ wird durch die Carr-Purcell- und Meiboom-Gill-Sequenzen bestimmt. Beide Methoden verwenden eine Serie von $\pi$-Pulsen, um die Magnetisierung in der $xy$-Ebene zu rephasieren und Echosignale zu erzeugen, die die Abklingzeit der Magnetisierung widerspiegeln.~\cite{praktikum4_atome}\\
+Die Dynamik dieser Echos ist in \cref{fig:spinecho_bloch} zu betrachten. Nach einem initialen $\frac{\pi}{2}$-Puls präzediert die Magnetisierung in der $xy$-Ebene und beginnt aufgrund von Spin-Spin-Wechselwirkungen und inhomogenen Magnetfeldern abzunehmen. Hierbei koppeln die Kernspins zu unterschiedlichen Frequenzen, was zu einer Dephasierung der Spins führt (Abb.~\ref{fig:spinecho_bloch} c). Nach einer Wartezeit $\tau$ wird ein $\pi$-Puls angewendet, der die Spins umkehrt und somit die Dephasierung rückgängig macht (Abb.~\ref{fig:spinecho_bloch} d). Nach weiteren $\tau$ präzedieren die Spins wieder synchronisiert und erzeugen ein Echo-Signal (Abb.~\ref{fig:spinecho_bloch} e).\cite{teachspin} Eine solche Sequenz wird in \cref{fig:spinecho_plot} gezeigt. Dieser Prozess wird für mehrere Echos wiederholt, wobei die Amplitude jedes Echos aufgrund der Spin-Spin-Wechselwirkungen exponentiell abnimmt.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figs/teachspin_spinecho_pulse.png}
+    \caption{Darstellung der $\pi/2$ bis $\pi$ Pulssequenz~\cite{teachspin}}
+    \label{fig:spinecho_plot}
+\end{figure}
+%--------
+\subsection{Hahn-Spinecho}
+%--------
+Zunächst wird die Hahn-Spinecho-Sequenz durchgeführt, um ein erstes Echo-Signal zu erzeugen. Dabei wird nach einem initialen $\frac{\pi}{2}$-Puls ein einzelner $\pi$-Puls nach einer Wartezeit $\tau$ angewendet, um ein Echo zu erzeugen.~\cite{praktikum4_atome}
+\begin{equation*}
+    \pi/2 \rightarrow \tau\pi
+\end{equation*}
+Die Messwerte sind in \cref{tab:hahn} aufgeführt. An die Messwerte wird ein Modell gemäß \cref{equ:trans_relax} angepasst (\cref{fig:hahn_echo}). Die resultierenden Anpassungsparameter ergeben sich zu:
+\begin{itemize}
+    \item $M_{xy,0} = \qty{1009.9 \pm 39.2}{\milli\volt}$
+    \item $T_2 = \qty{39.7 \pm 2.6}{\milli\second}$
+    \item $\chi_{\mathrm{red}}^2 = 0.15$
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/hahn_echo.pdf}
+    \caption{Messdaten und Anpassung der Hahn-Spinecho-Methode zur Bestimmung der homogenen transversalen Relaxationszeit $T_2$. Aufgetragen ist das Echo-Signal bei variabler Wartezeit $\tau$.}
+    \label{fig:hahn_echo}
+\end{figure}
+Der Wert für $\chi_{\mathrm{red}}^2$ liegt deutlich unter 1, was auf eine Überanpassung des Modells an die Messdaten hinweist. Dies könnte auf eine Überschätzung der Messunsicherheiten zurückzuführen sein.
+%--------
+\subsection{Carr-Purcell-Sequenz}
+%--------
+Die Carr-Purcell-Sequenz erweitert die Hahn-Spinecho-Methode, indem sie mehrere $\pi$-Pulse (hier $N=20$) in regelmäßigen Abständen anwendet, um eine Serie von Echos zu erzeugen.~\cite{praktikum4_atome}
+\begin{equation*}
+    \pi/2 \rightarrow \tau\pi \rightarrow 2\tau\pi \rightarrow 2\tau \ldots
+\end{equation*}
+Die Messwerte sind in \cref{tab:carr} aufgeführt. An die Messwerte wird ein Modell gemäß \cref{equ:trans_relax} angepasst (\cref{fig:carr_echo}). Die resultierenden Anpassungsparameter ergeben sich zu:
+\begin{itemize} 
+    \item $M_{xy,0} = \qty{0.83 \pm 0.02}{\volt}$
+    \item $T_2 = \qty{55.9 \pm 1.0}{\milli\second}$
+    \item $\chi_{\mathrm{red}}^2 = 4.3$
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/carr_purcell.pdf}
+    \caption{Messdaten und Anpassung der Carr-Purcell-Methode zur Bestimmung der homogenen transversalen Relaxationszeit $T_2$. Aufgetragen ist das Echo-Signal bei variabler Wartezeit $\tau$.}
+    \label{fig:carr_echo}
+\end{figure}
+Der Wert für $\chi_{\mathrm{red}}^2$ liegt deutlich über 1 und zeigt, dass die Streuung der Messpunkte um die Fitkurve größer ist als mit den angenommenen Messunsicherheiten zu erwarten wäre. Dies könnte auf unterschätzte Fehlerbalken oder systematische Fehler bei der Anwendung der Pulssequenz zurückzuführen sein, wie z.B. ungenaue Pulsdauern oder Phasenfehler. Vor allem bei der Carr-Purcell-Sequenz können sich kleine Pulsfehler von Echo zu Echo aufsummieren, da diese auf keine Weise kompensiert werden.
+%--------
+\subsection{Meiboom-Gill-Sequenz}
+%--------
+Die Meiboom-Gill-Sequenz ist eine Modifikation der Carr-Purcell-Sequenz, die entwickelt wurde, um die Auswirkungen von Pulsfehlern zu minimieren. Dabei alterniert die Phase der $\pi$-Pulse, was dazu beiträgt, die Akkumulation von Fehlern zu reduzieren.~\cite{praktikum4_atome}
+\begin{equation*}
+    \pi/2 \rightarrow \tau +\pi \rightarrow 2\tau-\pi \rightarrow 2\tau+\pi \rightarrow 2\tau -\pi \rightarrow 2\tau \ldots
+\end{equation*}
+Die Messwerte sind in \cref{tab:meiboom} aufgeführt. An die Messwerte wird ein Modell gemäß \cref{equ:trans_relax} angepasst (\cref{fig:meiboom_echo}). Die resultierenden Anpassungsparameter ergeben sich zu:
+\begin{itemize}
+    \item $M_{xy,0} = \qty{0.79 \pm 0.02}{\volt}$
+    \item $T_2 = \qty{63.4 \pm 1.3}{\milli\second}$
+    \item $\chi_{\mathrm{red}}^2 = 5.5$
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/meiboom_gill.pdf}
+    \caption{Messdaten und Anpassung der Meiboom-Gill-Methode zur Bestimmung der homogenen transversalen Relaxationszeit $T_2$. Aufgetragen ist das Echo-Signal bei variabler Wartezeit $\tau$.}
+    \label{fig:meiboom_echo}
+\end{figure}
+Der Wert für $\chi_{\mathrm{red}}^2$ liegt deutlich über 1 und zeigt, dass die Streuung der Messpunkte um die Fitkurve größer ist als mit den angenommenen Messunsicherheiten zu erwarten wäre. Dies könnte auf unterschätzte Fehlerbalken oder systematische Fehler bei der Anwendung der Pulssequenz zurückzuführen sein, wie z.B. ungenaue Pulsdauern oder Phasenfehler. Auch eine unzureichende Kalibrierung und Justage des Versuchsaufbaus könnte zu solchen Abweichungen führen.\\
+\vspace{0.2cm}
+
+Vergleicht man nun die drei Methoden zur Bestimmung von $T_2$, so ergeben sich die Werte:
+\begin{itemize}
+    \item Hahn-Spinecho: $T_2 = \qty{39.7 \pm 2.6}{\milli\second}$
+    \item Carr-Purcell: $T_2 = \qty{55.9 \pm 1.0}{\milli\second}$
+    \item Meiboom-Gill: $T_2 = \qty{63.4 \pm 1.3}{\milli\second}$
+\end{itemize}
+Die Differenzen der Werte sind signifikant und liegen außerhalb der Unsicherheiten. Dies könnte auf die unterschiedlichen Empfindlichkeiten der Methoden gegenüber systematischen Fehlern zurückzuführen sein.
+Auch ist anzumerken, dass sich die Messwerte der Carr-Purcell- und Meiboom-Gill-Sequenzen stark ähneln (vgl.~\cref{fig:meiboom_echo}).
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{plots/carr_meiboom.pdf}
+    \caption{Vergleich der Carr-Purcell- und Meiboom-Gill-Signale}
+    \label{fig:carr_meiboom}
+\end{figure}
+Da hier, vor allem in Hinsicht auf die Werte des Hahn-Echos, nicht davon ausgegangen wird, dass das Carr-Purcell-Signal dem idealen Verhalten entspricht\footnote{Bei betrachten beider Q-Signale auf dem Oszilloskop wurde bei beiden Sequenzen ein oszillierendes Signal vestgestellt, obwohl bei der Meiboom-Gill Sequenz ein gleichgerichtetes Signal zu erwarten war.}, wird ein Fehler in der Kalibrierung des Versuchsaufbaus vermutet. Mögliche Ursachen hierfür könnten ungenaue Pulsdauern, Phasenfehler oder eine unzureichende Justage des Magnetfelds sein. Der Mittelwert der Messungen ergibt sich zu:
+\begin{equation*}
+    T_2 = \qty{53.0 \pm 8.0}{\milli\second}
+\end{equation*}
+Gemäß \cref{equ:relax} und dem zuvor bestimmten Wert für $T_2^*$ von $T_2^* = \qty{4.40 \pm 0.05}{\milli\second}$ lässt sich nun auch die inhomogene Relaxationszeit $T_{2,\mathrm{inh}}$ berechnen\footnote{Fehler berechnet mit Gauß'scher Fehlerfortpflanzung}:
+\begin{itemize}
+    \item Hahn-Spinecho: $T_{2,\mathrm{inh}} = \qty{4.94844 \pm 0.00005}{\milli\second}$
+    \item Carr-Purcell: $T_{2,\mathrm{inh}} = \qty{4.77592 \pm 0.00003}{\milli\second}$
+    \item Meiboom-Gill: $T_{2,\mathrm{inh}} = \qty{4.72814 \pm 0.00003}{\milli\second}$
+    \item Mittelwert: $T_{2,\mathrm{inh}} = \qty{4.79835 \pm 0.00007}{\milli\second}$
+\end{itemize}
+Die Werte für $T_{2,\mathrm{inh}}$ liegen alle im Bereich von etwa $4.7$ bis $4.9\,\mathrm{ms}$ und sind somit konsistent miteinander. Somit lässt sich schließen, dass der Beitrag des inhomogenen Magnetfeldes einen signifikanten Einfluss auf die kernmagnetische Relaxation in diesem Experiment hat.
