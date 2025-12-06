@@ -1,5 +1,5 @@
-% !TEX root =/home/jaffa/P4_WS2526/401_ElektronischeUebergaengeAnAtomen/LateX/main.tex
-% !TEX root = /home/jaffar/Desktop/P4_WS2526/401_ElektronischeUebergaengeAnAtomen/LateX/main.tex
+% !TEX root =/home/jaalna/P4_WS2526/443_KernmagnetischeRelaxation/LateX/main.tex
+% !TEX root = /home/jaffar/Desktop/P4_WS2526/443_KernmagnetischeRelaxation/LateX/main.tex
 \documentclass[%
 paper=a4,       % Papiergröße
 fontsize=12pt,  % Schriftgröße
@@ -23,18 +23,17 @@ ngerman         % Option für deutsche Sprache
 \begin{document}
 
 \begin{titlepage}
-\sffamily
+%\sffamily
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-\center
-\textsc{\LARGE }\\[1.5cm] % Name of your university/college
+\center\textsc{\LARGE }\\[1.5cm] % Name of your university/college
 \textsc{\LARGE Praktikum 4}\\[0.5cm] % Major heading such as course name
 \textsc{\large Atome, Moleküle, kondensierte Materie}\\[0.5cm] % Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
-\HRule \\[0.4cm]
-{ \huge \bfseries Versuch 401: Elektonische Übergänge \\[0.3cm] an Atomen}\\[0.4cm] % Title of your document
-\HRule \\[0.2cm]
+\HRule\\[0.4cm]
+{ \huge \bfseries Versuch 401: Elektronische Übergänge \\[0.3cm] an Atomen}\\[0.4cm] % Title of your document
+\HRule\\[0.2cm]
 \Large{\textsc{Gruppe A208}}\\[0.2cm]
  
 %----------------------------------------------------------------------------------------
@@ -52,7 +51,7 @@ ngerman         % Option für deutsche Sprache
 \end{flushright}
 \end{minipage}\\[2.0cm]
 
-{\large Versuchsdurchführung\, 1/2. Dezember 2025 }\\[7.5cm] % Date, change the \today to a set date if you want to be precise
+{\large Versuchsdurchführung\, 1/2. Dezember 2025 }\\[8cm] % Date, change the \today to a set date if you want to be precise
 
 %----------------------------------------------------------------------------------------
 %	LOGO SECTION
@@ -61,15 +60,20 @@ ngerman         % Option für deutsche Sprache
 %----------------------------------------------------------------------------------------
 
 \vfill % Fill the rest of the page with whitespace
-
+% chktex-file 1   % to surpress spacing warning
 \end{titlepage}
-\normalfont
+%\normalfont
 \tableofcontents
 \clearpage
 \clearpage
 \setcounter{page}{1}
 \include{Einleitung}
-\include{durchfuhrung}
-\include{auswertung}
+\include{Zeeman}
+\include{FranckHertz}
+\include{Fazit}
+\appendix
 \printbibliography
+\listoffigures\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoftables\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\include{Anhang}
 \end{document}
